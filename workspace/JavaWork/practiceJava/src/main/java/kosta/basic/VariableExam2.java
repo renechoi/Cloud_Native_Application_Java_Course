@@ -30,14 +30,12 @@ public class VariableExam2 {
 
         System.out.println("최종결과:" + sum);
 
-
         int i = 1;
         for (; i <= 10; i++) {
             System.out.println("i:" + i);
         }
 
         System.out.println("i:" + i);
-
 
     }
 }
