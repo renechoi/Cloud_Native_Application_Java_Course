@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+/Users/Rene/Documents/rene/Kosta/Cloud_Native_Application_Java_Course/workspace/JavaWork/.metadata/.plugins/org.eclipse.jdt.core
+2710549243.index
+1535984005.index
+911871195.index
+1321737652.index
+1865797976.index
