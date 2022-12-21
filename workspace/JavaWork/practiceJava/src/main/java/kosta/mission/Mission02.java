@@ -1,6 +1,7 @@
 package kosta.mission;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
@@ -84,17 +85,63 @@ public class Mission02 {
         Scanner scanner = new Scanner(System.in);
 //        scanner.nextInt();  // 숫자로 입력 받을 때
 //        scanner.nextLine(); // 문자로 입력 받을 때
+//
+//        System.out.println("x: ");
+//        int x = scanner.nextInt();
+//
+//        System.out.println("y: ");
+//        int y = scanner.nextInt();
 
-        System.out.println("x: ");
-        int x = scanner.nextInt();
+//        System.out.printf("result : %d", x*y);
 
-        System.out.println("y: ");
-        int y = scanner.nextInt();
+        System.out.println("국어 점수를 입력해주세요:");
+        korean = scanner.nextInt();
+        System.out.println("영어 점수를 입력해주세요:");
+        english = scanner.nextInt();
+        System.out.println("수학 점수를 입력해주세요:");
+        math = scanner.nextInt();
 
-        System.out.printf("result : %d", x*y);
+        scoreTotal = korean + english + math;
+        scoreAverage2 = scoreTotal / 3.0;
 
+        System.out.println("총점: " + scoreTotal);
+        System.out.println("평균: " + scoreAverage2);
 
     }
+
+
+
+    private static void implicitCastingExample(){
+        byte typeByte = 1;
+        short typeShort = 2;
+        char typeChar = 3;
+        int typeInt = 4;
+        long typeLong = 5;
+        float typeFloat = 6;
+        double typeDouble = 7;
+
+        typeDouble = typeFloat;
+        typeFloat = typeLong;
+        typeLong = typeInt;
+        typeInt = typeChar;
+
+        typeInt = typeShort;
+        typeShort = typeByte;
+
+    }
+
+    private static void ExplicitCastingExample() throws IOException {
+        long amount = 100000000L;
+        double profitRate = 5.5;
+
+        long profitAmount = (long) (amount * profitRate / 100);
+        System.out.println(profitAmount);
+
+
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        int number = Integer.parseInt(bufferedReader.readLine());
+    }
+
 
 
     public class application {
