@@ -33,6 +33,21 @@ public class Mission02 {
         }
     }
 
+    public static String calculation2(int score){
+        switch (score/10){
+            case 9:
+                return "A";
+            case 8:
+                return "B";
+            case 7:
+                return "C";
+            case 6:
+                return "D";
+            default:
+                return "F";
+        }
+    }
+
     private static void gradingProgram() {
         // TODO 성적관리 프로그램을 구현하자
         // 국어, 영어, 수학 성적을 입력받은 후
