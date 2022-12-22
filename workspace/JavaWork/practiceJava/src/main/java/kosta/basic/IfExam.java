@@ -25,7 +25,18 @@ public class IfExam {
         }
         if (operator.equals("-")) {
             System.out.println(operand1 - operand2);
+            return;
         }
+        if (operator.equals("/")){
+            System.out.println(operand1/operand2);
+            return;
+        }
+        if (operator.equals("*")){
+            System.out.println(operand1*operand2);
+            return;
+        }
+
+
     }
 
     private static void compareTwoStrings() {
