@@ -1,8 +1,6 @@
 package kosta.basic;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -10,6 +8,29 @@ import java.util.stream.Stream;
 public class LoopExam01 {
     public static void main(String[] args) {
 
+    }
+
+    private static void printNotDividedWithContinueStatement() {
+        for (int i = 1; i <= 100; i++) {
+            if (i % 2 == 0 || i % 3 == 0) {
+                continue;
+            }
+            System.out.println(i);
+        }
+    }
+
+    private static void getRandomNumber() {
+        // random -> 난수(임의의 수)
+        // 1. Math.random() -> 0.0 ~ 0.9 // double 형식
+        // 2. Random 클래스의 nextInt()를 이용해보자
+
+        // TODO : 주사위의 값을 구해보자
+
+        int randomNumber = (int) (Math.random() * 6) + 1;
+        System.out.println(randomNumber);
+
+        Random random = new Random();
+        System.out.println(random.nextInt(6));
     }
 
     private static void printPositiveNumberOnly() {
