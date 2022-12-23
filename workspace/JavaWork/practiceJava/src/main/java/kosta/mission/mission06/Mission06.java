@@ -9,9 +9,6 @@ public class Mission06 {
         // 정답을 맞추면 : good ! 몇 번 만에 성공
         // 오답 : 입력 값보다 크다면 up, 작으면 down
 
-        Controller controller = new Controller();
-        controller.run();
-
         RandomNumber randomNumber = new RandomNumber(100);
         int generatedRandomNumber = randomNumber.getRandomNumber();
 
