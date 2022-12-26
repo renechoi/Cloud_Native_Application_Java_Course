@@ -1,11 +1,11 @@
-package kosta.mission;
+package kosta.mission.mission02;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-public class Mission02 {
+public class Mission02_1 {
     public static void main(String[] args) {
 
     }
