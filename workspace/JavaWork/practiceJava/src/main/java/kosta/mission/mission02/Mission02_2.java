@@ -11,13 +11,25 @@ public class Mission02_2 {
 
         Scanner scanner = new Scanner(System.in);
 
-        int sum = 0;
         for (int i = 0; i < scores.length; i++) {
             scores[i] = scanner.nextInt();
-            sum += scores[i];
         }
 
-        double average = sum / (double) scores.length;
+        int sum = calculateTotalScore(scores);
+        double average = calculateAverage(scores, sum);
+
         System.out.printf("총점 : %d, 평균 : %.2f\n", sum, average);
+    }
+
+    private static int calculateTotalScore(int[] scores){
+        int sum =0;
+        for (int score : scores){
+            sum += score;
+        }
+        return sum;
+    }
+
+    private static double calculateAverage(int[] scores, int sum) {
+        return sum / (double) scores.length;
     }
 }
