@@ -1,4 +1,4 @@
-package kosta.basic;
+package kosta.basic.day002;
 
 import java.util.Scanner;
 

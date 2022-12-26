@@ -1,4 +1,4 @@
-package kosta.basic;
+package kosta.basic.day002;
 
 public class VariableExam2 {
     public static void main(String[] args) {

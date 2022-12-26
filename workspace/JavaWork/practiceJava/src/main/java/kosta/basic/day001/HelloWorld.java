@@ -1,4 +1,4 @@
-package kosta.basic;
+package kosta.basic.day001;
 
 public class HelloWorld {
     public static void main(String[] args) {

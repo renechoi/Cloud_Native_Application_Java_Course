@@ -1,4 +1,4 @@
-package kosta.basic;
+package kosta.basic.day004;
 
 import java.io.BufferedReader;
 import java.io.IOException;

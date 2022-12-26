@@ -1,4 +1,4 @@
-package kosta.basic;
+package kosta.basic.day003;
 
 import java.io.IOException;
 
