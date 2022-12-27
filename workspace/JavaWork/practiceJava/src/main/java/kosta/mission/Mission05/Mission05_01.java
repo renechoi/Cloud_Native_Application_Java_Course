@@ -14,17 +14,17 @@ public class Mission05_01 {
     private static final String REQUEST_ADDITIONAL_NAME = "추가할 이름을 입력하세요.";
     private static final String NAME_NOT_IN_THE_MENU = "%s은 저장되어 있지 않습니다!\n";
     private static final String NAME_IN_THE_MENU_WITH_INDEX = "%s은 %d에 메뉴에 저장되어 있습니다.\n";
+    private static final String NAME_TO_BE_ALTERED_PREVIOUS = "수정할 기존의 이름을 입력하세요";
+    private static final String NAME_TO_BE_ALTERED_NEW = "수정할 새로운 이름을 입력하세요";
 
     public static void main(String[] args) {
         // 메뉴를 선택해서 해당 메뉴의 명령문을 실행해 보자.
-        // 1.추가 2.출력 3.검색 4.종료
+        // 1.추가 2.출력 3.검색 4.수정 5. 종료
 
         int number;
         String[] names = new String[5];
 
         do {
-
-            System.out.println(REQUEST_COMMAND);
             number = inputViewNumber();
             executeCommand(number, names);
         } while (isEndCommand(number));
@@ -41,17 +41,19 @@ public class Mission05_01 {
     }
 
     private static Integer inputViewNumber() {
+        System.out.println(REQUEST_COMMAND);
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 
-    private static String inputViewString() {
+    private static String inputViewString(String requestMessage) {
+        System.out.println(requestMessage);
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
     private static boolean isEndCommand(Integer number) {
-        return number != 4;
+        return number != 5;
     }
 
     public enum Command {
@@ -63,8 +65,7 @@ public class Mission05_01 {
 
                 int nextInput = Arrays.asList(names).indexOf(null);
 
-                System.out.println(REQUEST_ADDITIONAL_NAME);
-                names[nextInput] = String.valueOf(inputViewString());
+                names[nextInput] = String.valueOf(inputViewString(REQUEST_ADDITIONAL_NAME));
             }
         },
 
@@ -80,8 +81,7 @@ public class Mission05_01 {
         SEARCH(3) {
             @Override
             public void findMenu(int command, String[] names) {
-                System.out.println(MENU_SEARCH);
-                String requestedName = inputViewString();
+                String requestedName = inputViewString(MENU_SEARCH);
                 int nameIdx = Arrays.asList(names).indexOf(requestedName);
                 if (!isContains(names, requestedName)) {
                     System.out.printf(NAME_NOT_IN_THE_MENU, requestedName);
@@ -97,7 +97,14 @@ public class Mission05_01 {
             }
         },
 
-        END(4) {
+        ALTER(4) {
+            @Override
+            public void findMenu(int command, String[] names) {
+                names[Arrays.asList(names).indexOf(inputViewString(NAME_TO_BE_ALTERED_PREVIOUS))] = inputViewString(NAME_TO_BE_ALTERED_NEW);
+            }
+        },
+
+        END(5) {
             @Override
             public void findMenu(int command, String[] names) {
                 System.out.println(MENU_END);
