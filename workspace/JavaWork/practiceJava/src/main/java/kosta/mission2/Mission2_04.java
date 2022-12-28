@@ -1,11 +1,40 @@
 package kosta.mission2;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
+import java.util.stream.Stream;
+
 
 public class Mission2_04 {
+
+    @ParameterizedTest()
+    @MethodSource("drawCasesTestSets")
+    @DisplayName("draw 기능을 테스트한다")
+    void verifyDrawFunction(int A, int B) {
+        String result = judgeWinner(A, B);
+        assertThat(result).isEqualTo("D");
+    }
+
+    private static Stream<Arguments> drawCasesTestSets() {
+        return Stream.of(
+                Arguments.of(1, 1),
+                Arguments.of(2, 2),
+                Arguments.of(3, 3)
+        );
+    }
+
+
+
+
     public static void main(String[] args) throws IOException {
         // TODO : 가위바위보 게임을 만들어보자
         // 맨 첫 줄에 케이스 횟수가 주어진다
