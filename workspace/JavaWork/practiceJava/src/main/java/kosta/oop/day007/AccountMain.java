@@ -13,6 +13,21 @@ public class AccountMain {
 
         account.deposit(5000);
 
-        account.withdraw(20000);
+        try {
+            account.withdraw(20000);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
+
+        Account account2 = new Account();
+        account2.accountNo = "222 - 222";
+        account2.ownerName = "김길동";
+        account2.balance = 20000;
+
+        System.out.println(account.accountNo);
+        System.out.println(account2.accountNo);
+        System.out.println(account.ownerName);
+        System.out.println(account2.ownerName);
+
     }
 }
