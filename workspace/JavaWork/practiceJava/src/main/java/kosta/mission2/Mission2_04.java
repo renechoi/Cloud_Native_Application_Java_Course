@@ -24,6 +24,22 @@ public class Mission2_04 {
         assertThat(result).isEqualTo("D");
     }
 
+    @ParameterizedTest()
+    @MethodSource("winnerIsACasesTestSets")
+    @DisplayName("winner A 기능을 테스트한다")
+    void verifyWinnerIsAFunction(int A, int B) {
+        String result = judgeWinner(A, B);
+        assertThat(result).isEqualTo("A");
+    }
+
+    @ParameterizedTest()
+    @MethodSource("winnerIsBCasesTestSets")
+    @DisplayName("winner B 기능을 테스트한다")
+    void verifyWinnerIsBFunction(int A, int B) {
+        String result = judgeWinner(A, B);
+        assertThat(result).isEqualTo("B");
+    }
+
     private static Stream<Arguments> drawCasesTestSets() {
         return Stream.of(
                 Arguments.of(1, 1),
@@ -32,7 +48,21 @@ public class Mission2_04 {
         );
     }
 
+    private static Stream<Arguments> winnerIsACasesTestSets() {
+        return Stream.of(
+                Arguments.of(1, 3),
+                Arguments.of(2, 1),
+                Arguments.of(3, 2)
+        );
+    }
 
+    private static Stream<Arguments> winnerIsBCasesTestSets() {
+        return Stream.of(
+                Arguments.of(1, 2),
+                Arguments.of(2, 3),
+                Arguments.of(3, 1)
+        );
+    }
 
 
     public static void main(String[] args) throws IOException {
