@@ -9,6 +9,16 @@ public class Account {
     String ownerName;
     int balance;
 
+    public Account(){
+        System.out.println("생성자는 자동으로 호출된다!");
+    }
+
+    public Account(String accountNo, String ownerName, int balance){
+        this.accountNo = accountNo;
+        this.ownerName = ownerName;
+        this.balance = balance;
+    }
+
     public void deposit(int amount){
         balance +=amount;
     }

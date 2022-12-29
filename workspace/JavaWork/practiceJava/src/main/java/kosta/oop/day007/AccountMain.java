@@ -2,6 +2,21 @@ package kosta.oop.day007;
 
 public class AccountMain {
     public static void main(String[] args) {
+
+    }
+
+    private static void practiceObjectCreation2() {
+        String accountNo = "123-1234";
+        String ownerName = "홍길동";
+        int balance = 1000;
+        Account account = new Account(accountNo, ownerName, balance);
+
+        System.out.println(account.accountNo);
+        System.out.println(account.ownerName);
+        System.out.println(account.balance);
+    }
+
+    private static void practiceObjectCreation1() {
         // 객체 생성하기 !
         // 데이터 타입에 클래스 타입이 있다. = 인스턴스 변수
 
@@ -28,6 +43,5 @@ public class AccountMain {
         System.out.println(account2.accountNo);
         System.out.println(account.ownerName);
         System.out.println(account2.ownerName);
-
     }
 }
