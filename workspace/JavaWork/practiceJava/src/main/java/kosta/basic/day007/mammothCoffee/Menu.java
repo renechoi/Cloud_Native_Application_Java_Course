@@ -1,4 +1,4 @@
-package kosta.oop.day007.mammothCoffee;
+package kosta.basic.day007.mammothCoffee;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package kosta.oop.day007.mammothCoffee;
+package kosta.basic.day007.mammothCoffee;
 
 public class MammothCoffeeMain {
     public static void main(String[] args) {

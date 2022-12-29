@@ -1,4 +1,4 @@
-package kosta.oop.day007;
+package kosta.basic.day007;
 
 public class Account {
     // 계좌 객체

@@ -1,4 +1,4 @@
-package kosta.oop.day007.mammothCoffee;
+package kosta.basic.day007.mammothCoffee;
 
 public class MammothCoffee {
     // 아메리카노, 카페라떼

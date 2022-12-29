@@ -1,4 +1,4 @@
-package kosta.oop.day007;
+package kosta.basic.day007;
 
 public class AccountMain {
     public static void main(String[] args) {
