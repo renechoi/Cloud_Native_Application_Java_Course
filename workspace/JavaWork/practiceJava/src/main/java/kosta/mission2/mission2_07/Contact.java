@@ -25,11 +25,6 @@ public class Contact {
     }
 
     public void printContactInfo() {
-        System.out.println( "Contact{" +
-                "name='" + name + '\'' +
-                ", number='" + number + '\'' +
-                ", dob=" + dob +
-                ", dobFormatted='" + dobFormatted + '\'' +
-                '}');
+        System.out.printf("이름: %s 전화번호: %s 생년월일: d%s\n", name, number, dobFormatted);
     }
 }
