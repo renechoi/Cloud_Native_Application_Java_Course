@@ -1,4 +1,4 @@
-package kosta.mission2.mission2_07;
+package kosta.mission2.mission2_07.domain;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,8 +9,7 @@ public class Contact {
     private LocalDate dob;
     private String dobFormatted;
 
-
-    Contact(){
+    Contact() {
     }
 
     public Contact(String name, String number, LocalDate dob) {
@@ -20,11 +19,19 @@ public class Contact {
         this.dobFormatted = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일").format(dob);
     }
 
-    public String getFormattedDob(){
+    public String getFormattedDob() {
         return this.dobFormatted;
     }
 
     public void printContactInfo() {
-        System.out.printf("이름: %s 전화번호: %s 생년월일: d%s\n", name, number, dobFormatted);
+        System.out.printf("\n이름: %s 전화번호: %s 생년월일: %s\n\n", name, number, dobFormatted);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
