@@ -16,9 +16,14 @@ public class Management {
                         LocalDate.of(inputView.getDobYear(), inputView.getDobMonth(), inputView.getDobDate())));
     }
 
-    public void printInfo() {
+    public void printInfoAll() {
         for (Contact contact : contacts) {
             contact.printContactInfo();
         }
+    }
+
+    public void printInfoByName() {
+        InputView inputView = new InputView();
+
     }
 }

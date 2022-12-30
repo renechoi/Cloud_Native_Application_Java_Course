@@ -7,17 +7,20 @@ enum Command {
     ADD_INFO(1) {
         @Override
         public void systemAction(Management management) {
-            String name = "abc";
-            String number = "123";
             management.addInfo();
         }
     },
-    PRINT_INFO(2) {
+    PRINT_INFO_ALL(2) {
         @Override
         public void systemAction(Management management) {
-            management.printInfo();
+            management.printInfoAll();
         }
 
+    },
+    PRINT_INFO_BY_NAME(3) {
+        @Override
+        public void systemAction(Management management) {
+        }
     },
     EXIT(3) {
         @Override

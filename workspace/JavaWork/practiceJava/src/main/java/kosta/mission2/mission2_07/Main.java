@@ -14,7 +14,9 @@ public class Main {
         // 3. manager 클래스를 생성해서 각각의 기능을 구현하도록 하자
         // 4. 각각 추가, 출력에 대한 기능을 구현
 
-        Controller controller = new Controller();
+        InputView inputView = new InputView();
+
+        Controller controller = new Controller(inputView);
         controller.run();
     }
 }
