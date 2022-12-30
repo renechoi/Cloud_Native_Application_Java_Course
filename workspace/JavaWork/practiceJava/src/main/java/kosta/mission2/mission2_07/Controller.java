@@ -2,10 +2,20 @@ package kosta.mission2.mission2_07;
 
 public class Controller {
 
-    public void run(){
-        InputView inputView = new InputView();
+    public static final int QUIT_COMMAND = 3;
 
-        Command command = Command.of(inputView.getCommand());
+    public void run() {
+        Management management = new Management();
+        while (true) {
+            Command command = Command.of(new InputView().getGeneralCommand());
+            if (isQuit(command)) {
+                break;
+            }
+            command.systemAction(management);
+        }
+    }
 
+    private static boolean isQuit(Command command) {
+        return command.getCommand() == QUIT_COMMAND;
     }
 }

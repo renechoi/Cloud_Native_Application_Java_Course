@@ -6,18 +6,22 @@ enum Command {
 
     ADD_INFO(1) {
         @Override
-        public void systemAction() {
+        public void systemAction(Management management) {
+            String name = "abc";
+            String number = "123";
+            management.addInfo();
         }
     },
     PRINT_INFO(2) {
         @Override
-        public void systemAction() {
+        public void systemAction(Management management) {
+            management.printInfo();
         }
 
     },
     EXIT(3) {
         @Override
-        public void systemAction() {
+        public void systemAction(Management management) {
         }
     };
 
@@ -33,5 +37,10 @@ enum Command {
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }
-    public abstract void systemAction();
+
+    public int getCommand() {
+        return command;
+    }
+
+    public abstract void systemAction(Management management);
 }
