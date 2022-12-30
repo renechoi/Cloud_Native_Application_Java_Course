@@ -12,7 +12,8 @@ public class AccountMain {
         Bank bank = new Bank();
 
         InputView inputView = new InputView();
-        bank.handleCommand(inputView.getInput());
+        bank.handleCommand(inputView.getCommand());
+
 
     }
 }

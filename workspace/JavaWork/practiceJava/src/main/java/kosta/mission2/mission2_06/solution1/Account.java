@@ -11,6 +11,15 @@ public class Account {
         this.accountName = accountName;
     }
 
+    public Account(String accountName, int amount) {
+        this.accountName = accountName;
+        this.amount = amount;
+    }
+
+    public Account(int amount) {
+        this.amount = amount;
+    }
+
     public String getAccountName() {
         return accountName;
     }

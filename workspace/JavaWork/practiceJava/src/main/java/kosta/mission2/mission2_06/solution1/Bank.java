@@ -2,67 +2,110 @@ package kosta.mission2.mission2_06.solution1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Bank {
 
     static Account account;
-    static ArrayList<Account> accounts = new ArrayList<>();
+    static List<Account> accounts = new ArrayList<>();
 
-    public void handleCommand(int command) {
-        System.out.println(Arrays.toString(Command.values()));
+    public void handleCommand(int userInput) {
 
-        account = Arrays.stream(Command.values())
-                .filter(v -> v.getCommand() == command)
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new)
-                .getAccount();
+        while(true){
+            Command command = Command.of(userInput);
+
+            if (command.command==6){
+                break;
+            }
+            command.bankAction();
+        }
+
     }
 
     public static Account createAccount() {
-        accounts.add(new Account());
+        InputView inputView = new InputView();
+        accounts.add(new Account(inputView.getAccountName()));
         return account;
     }
 
-    public Account viewAllAccounts() {
+    public static Account viewAllAccounts() {
+        for (Account account : accounts) {
+            System.out.println(account.accountName);
+        }
         return account;
     }
 
-    public Account viewAccount() {
+    public static Account viewAccount() {
+        InputView inputView = new InputView();
+        String accountName = inputView.getAccountName();
+        System.out.println("viewAccount");
         return account;
     }
 
-    public Account deposit() {
+    public static Account deposit() {
+        System.out.println("deposit");
         return account;
     }
 
-    public Account withdraw() {
+    public static Account withdraw() {
+        System.out.println("withdraw");
         return account;
     }
 
 
     enum Command {
-        CREATE(1, createAccount()),
-        VIEW_ALL(2, viewAllAccounts()),
-        VIEW_ACCOUNT(3, viewAccount()),
-        DEPOSIT(4, deposit()),
-        WITHDRAW(5, withdraw());
+
+        CREATE_ACCOUNT(1) {
+            @Override
+            public void bankAction() {
+                createAccount();
+            }
+        },
+        VIEW_ALL(2) {
+            @Override
+            public void bankAction() {
+                viewAllAccounts();
+            }
+
+        },
+        VIEW_ACCOUNT(3) {
+            @Override
+            public void bankAction() {
+                viewAccount();
+            }
+        },
+        DEPOSIT(4) {
+            @Override
+            public void bankAction() {
+                deposit();
+            }
+        },
+        WITHDRAW(5) {
+            @Override
+            public void bankAction() {
+                withdraw();
+            }
+        },
+        QUIT(6) {
+            @Override
+            public void bankAction() {
+            }
+        };
 
         private final int command;
-        private final Account account;
 
-        Command(int command, Account account) {
-            this.command = command;
-            this.account = account;
+        Command(int userChoice) {
+            this.command = userChoice;
         }
 
-        public int getCommand() {
-            return command;
-        }
 
-        public Account getAccount() {
-            return account;
+        public static Command of(int userChoice) {
+            return Arrays.stream(values())
+                    .filter(v -> v.command == userChoice)
+                    .findFirst()
+                    .orElseThrow(IllegalArgumentException::new);
         }
-
+        public abstract void bankAction();
     }
 
 }
