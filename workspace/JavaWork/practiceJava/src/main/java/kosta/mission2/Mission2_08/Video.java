@@ -10,7 +10,7 @@ public class Video {
         this(title, actor, "video");
     }
 
-    public Video(String title, Actor actor, String type) {
+    private Video(String title, Actor actor, String type) {
         this.title = title;
         this.actor = actor;
         this.type = type;
@@ -50,9 +50,8 @@ public class Video {
         return String.format("""
                         title : %s
                         actor : %s
-                        type : %s 
                          """,
-                title, actor.getName(), type);
+                title, actor.getName());
     }
 }
 
@@ -62,7 +61,15 @@ class Drama extends Video {
 
     public Drama(String title, Actor actor, String type) {
         super(title, actor);
+        this.type = type;
         System.out.printf("this is %s\n", type);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format("""
+            type : %s
+            """,type);
     }
 }
 
@@ -72,6 +79,14 @@ class Movie extends Video {
 
     public Movie(String title, Actor actor, String type) {
         super(title, actor);
+        this.type = type;
         System.out.printf("this is %s\n", type);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format("""
+            type : %s
+            """,type);
     }
 }
