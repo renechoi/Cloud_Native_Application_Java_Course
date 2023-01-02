@@ -4,6 +4,7 @@ public class StaticExam {
 
     int total;
     static int grandTotal;
+    final int num = 10;
 
     public static void main(String[] args) {
         StaticExam staticExam1 =  new StaticExam();
@@ -24,6 +25,12 @@ public class StaticExam {
     public void add(){
         total += 10;
         grandTotal +=10;
+    }
+
+    public static void staticExample(){
+        Integer.parseInt("1");
+        Math.random();
+
     }
 
 }
