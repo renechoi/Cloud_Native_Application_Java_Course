@@ -1,6 +1,6 @@
 package kosta.mission2.Mission2_08;
 
-public class GeneralMember {
+public class GeneralMember extends Member {
     private String id;
     private String name;
     private String address;
@@ -11,6 +11,10 @@ public class GeneralMember {
         this.name = name;
         this.address = address;
         this.video = video;
+    }
+
+    public void watchVideo(Video video) {
+        System.out.printf("%s is watching %s %s \n",this.name, video.getClass().getSimpleName(), getVideo().getTitle());
     }
 
     public String getId() {
