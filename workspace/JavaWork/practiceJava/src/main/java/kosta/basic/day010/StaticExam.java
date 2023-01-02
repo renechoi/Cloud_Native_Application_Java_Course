@@ -4,7 +4,7 @@ public class StaticExam {
 
     int total;
     static int grandTotal;
-    final int num = 10;
+    static final int NUM = 10;
 
     public static void main(String[] args) {
         StaticExam staticExam1 =  new StaticExam();
@@ -30,7 +30,10 @@ public class StaticExam {
     public static void staticExample(){
         Integer.parseInt("1");
         Math.random();
+    }
 
+    public static void constantExample(){
+        double pi = Math.PI;
     }
 
 }
