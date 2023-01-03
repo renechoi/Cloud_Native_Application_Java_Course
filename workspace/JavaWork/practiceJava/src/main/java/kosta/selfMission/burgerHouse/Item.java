@@ -16,6 +16,9 @@ public class Item {
         if ("side".equals(type) || "drink".equals(type)) {
             return size + " " + name;
         }
+        if ("topping".equals(type)){
+            return type + " " + name;
+        }
         return name;
     }
 
