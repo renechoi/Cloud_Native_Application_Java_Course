@@ -12,41 +12,41 @@ public class Customer {
     private final String name;
     private final Account account;
 
-    public Customer() {
+    public Customer() throws InvalidCustomerInputException {
         this.id = requestId();
         this.name = requestName();
         this.account = new Account(id, requestAmount());
         OutputView.consolePrint(OutputView.ADD_ACCOUNT_SUCCESS);
     }
 
-    private String requestId() {
+    private String requestId() throws InvalidCustomerInputException {
         return validate(InputView.getId());
     }
 
-    private String requestName() {
+    private String requestName() throws InvalidCustomerInputException {
         return validate(InputView.getName());
     }
 
-    private Long requestAmount() {
+    private Long requestAmount() throws InvalidCustomerInputException {
         return validate(InputView.getBalance());
     }
 
-    private Long validate(Long userInput) {
+    private Long validate(Long userInput) throws InvalidCustomerInputException {
         if (userInput < 0) {
-            try {
-                throw new InvalidCustomerInputException(InvalidCustomerInputException.INVALID_NUMBER_UNDER_ZERO);
-            } catch (InvalidCustomerInputException ignored) {
-            }
+//            try {
+            throw new InvalidCustomerInputException(InvalidCustomerInputException.INVALID_NUMBER_UNDER_ZERO);
+//            } catch (InvalidCustomerInputException ignored) {
+//            }
         }
         return userInput;
     }
 
-    private String validate(String userInput) {
-        try {
-            validateNullOrEmpty(userInput);
-            validateProperWord(userInput);
-        } catch (InvalidCustomerInputException ignored) {
-        }
+    private String validate(String userInput) throws InvalidCustomerInputException {
+//        try {
+        validateNullOrEmpty(userInput);
+        validateProperWord(userInput);
+//        } catch (InvalidCustomerInputException ignored) {
+//        }
         return userInput;
     }
 

@@ -1,5 +1,6 @@
 package kosta.mission2.Mission2_10.bank.bank;
 
+import kosta.mission2.Mission2_10.bank.customer.InvalidCustomerInputException;
 import kosta.mission2.Mission2_10.bank.ui.InputView;
 import kosta.mission2.Mission2_10.bank.ui.OutputView;
 import kosta.mission2.Mission2_10.bank.customer.Account;
@@ -17,7 +18,7 @@ public class Bank {
     public Bank() {
     }
 
-    public void addCustomer() {
+    public void addCustomer() throws InvalidCustomerInputException {
         CUSTOMERS[CUSTOMER_NUMBER++] = new Customer();
     }
 
