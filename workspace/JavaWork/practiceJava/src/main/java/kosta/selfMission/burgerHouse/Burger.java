@@ -41,9 +41,26 @@ public class Burger extends Item {
                 + (extra2 == null ? 0 : extra3.getAdjustedPrice());
     }
 
-
     @Override
     public void setSize(String size) {
         super.setSize(size);
+    }
+
+    public void printItemizedList(){
+
+        if (extra1 !=null){
+            extra1.printItem();
+        }
+        if (extra2 !=null){
+            extra2.printItem();
+        }
+        if (extra3 !=null){
+            extra3.printItem();
+        }
+    }
+
+    @Override
+    public void printItem() {
+        super.printItem();
     }
 }

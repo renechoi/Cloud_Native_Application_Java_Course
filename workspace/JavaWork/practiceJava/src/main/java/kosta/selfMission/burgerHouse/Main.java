@@ -17,6 +17,7 @@ public class Main {
         burger.addToppings("avocado","lettuce","bacon");
         burger.setSize("LARGE");
         burger.printItem();
+        burger.printItemizedList();
 
     }
 
