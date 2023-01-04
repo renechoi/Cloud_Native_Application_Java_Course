@@ -35,5 +35,20 @@ public class VideoMain {
         member.watchVideo(movie);
         member.watchVideo(movie);
         System.out.println(member);
+
+
+        System.out.println("-".repeat(50));
+        System.out.println("-".repeat(50));
+
+        Member[] members = {
+                new SpecialMember("casting exercise1", "배열안의객체1", "집", movie, 10),
+                new SpecialMember("casting exercise2", "배열안의객체2", "집", drama, 20),
+                new SpecialMember("casting exercise3", "배열안의객체3", "집", video1, 30),
+        };
+
+        for (Member memberCast : members){
+            System.out.println(memberCast);
+            System.out.println("-".repeat(10));
+        }
     }
 }
