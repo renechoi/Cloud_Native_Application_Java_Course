@@ -24,6 +24,8 @@ public class Main {
                 .forEach(System.out::println);
 
         generalMember.showAll();
+
+        GeneralMember specialMember = new SpecialMember();
     }
 
 }
