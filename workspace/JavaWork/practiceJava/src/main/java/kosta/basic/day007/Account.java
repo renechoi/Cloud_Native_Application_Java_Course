@@ -9,24 +9,42 @@ public class Account {
     String ownerName;
     int balance;
 
-    public Account(){
+    public Account() {
         System.out.println("생성자는 자동으로 호출된다!");
     }
 
-    public Account(String accountNo, String ownerName, int balance){
+    public Account(String accountNo, String ownerName, int balance) {
         this.accountNo = accountNo;
         this.ownerName = ownerName;
         this.balance = balance;
     }
 
-    public void deposit(int amount){
-        balance +=amount;
+    public void deposit(int amount) {
+        balance += amount;
     }
 
-    public void withdraw(int amount){
-        if (balance < amount){
+    public void withdraw(int amount) {
+        if (balance < amount) {
             throw new IllegalArgumentException("balance not enough !!!");
         }
         balance -= amount;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                """
+                        ownerName: %s
+                        accountNo: %s
+                        balance: %d
+                         """, ownerName, accountNo, balance);
     }
 }
