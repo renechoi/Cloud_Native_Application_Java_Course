@@ -21,8 +21,6 @@ public class Account {
     public void withdraw(long amount) {
         validate(amount);
         this.balance = this.balance - amount;
-        OutputView.consolePrint(OutputView.WITHDRAW_SUCCESS);
-        OutputView.consolePrint(OutputView.WITHDRAW_AMOUNT, this.balance);
     }
 
     private void validate(long amount) {

@@ -26,6 +26,7 @@ public class Controller {
             case "3" -> this.bank.printAllCustomerInfo();
             case "4" -> this.bank.deposit();
             case "5" -> this.bank.withdraw();
+            case "6" -> this.bank.withdraw();
         }
         } catch (Exception ignored){
         }

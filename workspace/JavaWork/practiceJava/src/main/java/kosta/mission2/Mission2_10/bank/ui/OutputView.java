@@ -22,6 +22,8 @@ public class OutputView {
     public static final String ADD_ACCOUNT_SUCCESS = "정상 등록되었습니다!";
     public static final String WITHDRAW_SUCCESS = "정상적으로 출금되었습니다";
     public static final String WITHDRAW_AMOUNT = "출금후 잔고는 %d 입니다";
+    public static final String PAYMENT_SUCCESS = "지불이 정상적으로 되었습니다!";
+    public static final String PAYMENT_NOT_SUCCESS = "지불이 정상적으로 되지 않았습니다!!!";
 
     public static void consolePrint(String message) {
         System.out.println(message);

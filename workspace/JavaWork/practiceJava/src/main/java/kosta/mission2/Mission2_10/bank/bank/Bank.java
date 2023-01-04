@@ -34,6 +34,17 @@ public class Bank {
         Account account = customer.getAccount();
 
         account.withdraw(InputView.getBalance());
+
+        OutputView.consolePrint(OutputView.WITHDRAW_SUCCESS);
+        OutputView.consolePrint(OutputView.WITHDRAW_AMOUNT, account.getBalance());
+    }
+
+    public void pay() {
+        Customer customer = getCustomer();
+        Account account = customer.getAccount();
+
+        OutputView.consolePrint(OutputView.WITHDRAW_SUCCESS);
+        OutputView.consolePrint(OutputView.WITHDRAW_AMOUNT, account.getBalance());
     }
 
     public void printCustomerInfo() {
