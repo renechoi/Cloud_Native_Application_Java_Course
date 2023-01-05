@@ -26,12 +26,12 @@ public class Main {
         generalMember.showAll();
 
         GeneralMember specialMember = new SpecialMember();
-
+        GeneralMember sm = new SpecialMember();
         GeneralMember generalMember1 = new GeneralMember("a", "홍길동", "가산");
         SpecialMember specialMember1 = (SpecialMember) generalMember1;
 
 
-        if (specialMember instanceof SpecialMember){
+        if (sm instanceof SpecialMember){
             SpecialMember specialMember2 = (SpecialMember) generalMember1;
             System.out.println("가능 !!!");
         }
