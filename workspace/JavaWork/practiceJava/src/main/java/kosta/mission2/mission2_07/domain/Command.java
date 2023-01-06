@@ -8,38 +8,38 @@ enum Command {
 
     ADD_INFO(1) {
         @Override
-        public void systemAction(Management management, InputView inputView) {
-            management.addInfo(inputView);
+        public void systemAction(Management management) {
+            management.addInfo();
         }
     },
     PRINT_INFO_ALL(2) {
         @Override
-        public void systemAction(Management management, InputView inputView) {
+        public void systemAction(Management management) {
             management.printInfoAll();
         }
 
     },
     PRINT_INFO_BY_NAME(3) {
         @Override
-        public void systemAction(Management management, InputView inputView) {
-            management.printInfoByName(inputView);
+        public void systemAction(Management management) {
+            management.printInfoByName();
         }
     },
     UPDATE(4) {
         @Override
-        public void systemAction(Management management, InputView inputView) {
-            management.update(inputView);
+        public void systemAction(Management management) {
+            management.update();
         }
     },
     DELETE(5) {
         @Override
-        public void systemAction(Management management, InputView inputView) {
-            management.delete(inputView);
+        public void systemAction(Management management) {
+            management.delete();
         }
     },
     EXIT(6) {
         @Override
-        public void systemAction(Management management, InputView inputView) {
+        public void systemAction(Management management) {
         }
     };
 
@@ -67,5 +67,5 @@ enum Command {
         }
     }
 
-    public abstract void systemAction(Management management, InputView inputView);
+    public abstract void systemAction(Management management);
 }

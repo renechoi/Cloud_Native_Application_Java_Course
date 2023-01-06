@@ -1,5 +1,7 @@
 package kosta.mission2.mission2_07.domain;
 
+import kosta.mission2.mission2_07.domain.contact.ContactGeneral;
+import kosta.mission2.mission2_07.domain.contact.ContactUniversity;
 import kosta.mission2.mission2_07.ui.InputView;
 
 import java.time.LocalDate;
@@ -14,13 +16,19 @@ public class Management {
     public static final String UPDATE_TO = "수정후";
     public static final String DELETE = "삭제할";
 
-    List<Contact> contacts = new ArrayList<>();
+    List<ContactGeneral> contacts = new ArrayList<>();
 
-    public void addInfo(InputView inputView) {
-        contacts.add(
-                new Contact(inputView.getName(ADDITION),
-                        inputView.getNumber(),
-                        LocalDate.of(inputView.getDobYear(), inputView.getDobMonth(), inputView.getDobDate())));
+    public void addInfo() {
+
+        String type = InputView.getType();
+        String name = InputView.getName(ADDITION);
+        String number = InputView.getNumber();
+        LocalDate localDate = LocalDate.of(InputView.getDobYear(), InputView.getDobMonth(), InputView.getDobDate());
+
+        switch (type) {
+            case "일반" -> contacts.add(new ContactGeneral(type, name, number, localDate));
+            case "동창" -> contacts.add(new ContactUniversity(type, name, number, localDate));
+        }
     }
 
     public void printInfoAll() {
@@ -28,30 +36,30 @@ public class Management {
             System.out.println("contacts is empty!");
             return;
         }
-        for (Contact contact : contacts) {
+        for (ContactGeneral contact : contacts) {
             contact.printContactInfo();
         }
     }
 
-    public void printInfoByName(InputView inputView) {
-        String nameRequested = inputView.getName(SEARCH);
+    public void printInfoByName( ) {
+        String nameRequested = InputView.getName(SEARCH);
         getContact(nameRequested).printContactInfo();
     }
 
-    public void update(InputView inputView) {
-        String nameFrom = inputView.getName(UPDATE_FROM);
-        String nameTo = inputView.getName(UPDATE_TO);
+    public void update( ) {
+        String nameFrom = InputView.getName(UPDATE_FROM);
+        String nameTo = InputView.getName(UPDATE_TO);
 
         getContact(nameFrom).setName(nameTo);
     }
 
-    public void delete(InputView inputView) {
-        String nameToBeDeleted = inputView.getName(DELETE);
+    public void delete() {
+        String nameToBeDeleted = InputView.getName(DELETE);
 
         contacts.remove(getContact(nameToBeDeleted));
     }
 
-    private Contact getContact(String nameFrom) {
+    private ContactGeneral getContact(String nameFrom) {
         return contacts.stream()
                 .filter(c -> c.getName().equals(nameFrom))
                 .findFirst()

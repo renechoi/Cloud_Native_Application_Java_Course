@@ -4,10 +4,7 @@ import kosta.mission2.mission2_07.ui.InputView;
 
 public class Controller {
 
-    private InputView inputView;
-
-    public Controller(InputView inputView) {
-        this.inputView = inputView;
+    public Controller( ) {
     }
 
     public static final int QUIT_COMMAND = 6;
@@ -17,11 +14,11 @@ public class Controller {
 
         while (true) {
             try {
-                Command command = Command.of(inputView.getGeneralCommand());
+                Command command = Command.of(InputView.getGeneralCommand());
                 if (isQuit(command)) {
                     break;
                 }
-                command.systemAction(management, inputView);
+                command.systemAction(management);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

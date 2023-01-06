@@ -19,9 +19,7 @@ public class Main {
         // 5. 수정
         // 6. 삭제
 
-        InputView inputView = new InputView();
-
-        Controller controller = new Controller(inputView);
+        Controller controller = new Controller();
         controller.run();
     }
 }
