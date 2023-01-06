@@ -1,4 +1,4 @@
-package kosta.mission2.mission2_11.implementExample;
+package kosta.mission2.mission2_11.interfaceExample;
 
 public class Worker extends Person implements Speakable{
 

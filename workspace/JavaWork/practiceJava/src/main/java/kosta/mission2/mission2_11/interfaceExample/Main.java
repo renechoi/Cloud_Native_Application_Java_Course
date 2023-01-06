@@ -1,4 +1,4 @@
-package kosta.mission2.mission2_11.implementExample;
+package kosta.mission2.mission2_11.interfaceExample;
 
 public class Main {
     public static void main(String[] args) {
