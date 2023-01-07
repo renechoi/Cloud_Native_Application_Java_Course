@@ -2,6 +2,7 @@ package kosta.toyMission.baseball.domain.player;
 
 import kosta.toyMission.baseball.GameController;
 import kosta.toyMission.baseball.domain.computer.Baseball;
+import kosta.toyMission.baseball.domain.game.HelpCommandException;
 import kosta.toyMission.baseball.ui.inputView.InputView;
 import kosta.toyMission.baseball.ui.inputView.invalidPlayerRawInputException;
 
@@ -24,7 +25,7 @@ public class BaseballReceiver {
     private String getPlayerNumbers() {
         String playerNumbers = InputView.getPlayerNumbers();
         if (GameController.HINT_DIAL.equals(playerNumbers) || GameController.CHEAT_KEY_DIAL.equals(playerNumbers)){
-            throw new RuntimeException();
+            throw new HelpCommandException();
         }
         return validateDigits(playerNumbers);
     }

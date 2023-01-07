@@ -7,6 +7,8 @@ import kosta.toyMission.baseball.ui.outputView.OutputView;
 
 public class BaseballGame {
 
+    public static final int HINT_CONDITION = 6;
+    public static final int CHEAT_KEY_CONDITION = 10;
     private final Computer computer;
     private Player player;
     private BaseballJudge baseballJudge;
@@ -31,21 +33,29 @@ public class BaseballGame {
         return baseballJudge.getStrikeCount() == GameController.BASEBALL_SIZE;
     }
 
-    private void handleHint(){
+    public void handleHelpCommand() {
+        if (roundCounts == HINT_CONDITION) {
+            // Todo : create hint info
+            OutputView.printHintMessage2();
+        }
 
-    }
-
-    private void handleCheatKey(){
-
-    }
-
-    private void helpPlayer(int roundCounts){
-        if(roundCounts ==6){
-            OutputView.printHintMessage(roundCounts);
+        if (roundCounts == CHEAT_KEY_CONDITION) {
+            // Todo : create cheat key info
+            OutputView.printCheatKeyMessage2();
         }
     }
 
-    private void createChillingMessage(){
+    private void helpPlayer(int roundCounts) {
+        if (roundCounts == HINT_CONDITION) {
+            OutputView.printHintMessage1(roundCounts);
+        }
+
+        if (roundCounts == CHEAT_KEY_CONDITION) {
+            OutputView.printCheatKeyMessage1(roundCounts);
+        }
+    }
+
+    private void createChillingMessage() {
 
     }
 
@@ -55,5 +65,9 @@ public class BaseballGame {
 
     public int getRoundCounts() {
         return roundCounts;
+    }
+
+    public void setCountsBack() {
+        this.roundCounts = roundCounts - 1;
     }
 }

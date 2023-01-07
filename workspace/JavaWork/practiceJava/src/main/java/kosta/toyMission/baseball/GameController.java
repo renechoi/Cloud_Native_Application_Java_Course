@@ -2,6 +2,7 @@ package kosta.toyMission.baseball;
 
 import kosta.toyMission.baseball.domain.computer.Computer;
 import kosta.toyMission.baseball.domain.game.BaseballGame;
+import kosta.toyMission.baseball.domain.game.HelpCommandException;
 import kosta.toyMission.baseball.domain.game.invalidRetryCommandException;
 import kosta.toyMission.baseball.ui.inputView.InputView;
 import kosta.toyMission.baseball.ui.outputView.OutputView;
@@ -27,10 +28,12 @@ public class GameController {
         retry(baseballGame);
     }
 
-    private void play(BaseballGame baseballGame){
-        try{
+    private void play(BaseballGame baseballGame) {
+        try {
             baseballGame.round();
-        } catch (RuntimeException e){
+        } catch (HelpCommandException e) {
+            baseballGame.setCountsBack();
+            baseballGame.handleHelpCommand();
             play(baseballGame);
         }
     }
@@ -44,7 +47,7 @@ public class GameController {
         }
     }
 
-    private void retry(BaseballGame baseballGame){
+    private void retry(BaseballGame baseballGame) {
         OutputView.printSuccessMessage(baseballGame.getRoundCounts());
         OutputView.printRetryMessage();
         if (validateRetry(parseInt(InputView.getRetryCommand())) == 1) {
