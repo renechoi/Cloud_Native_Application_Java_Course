@@ -17,7 +17,7 @@ public class BaseballGame {
     }
 
     public void round() {
-        OutputView.printLevelMessage();
+        roundCounts = 0;
         do {
             roundCounts++;
             this.player = Player.getPlayerBaseball();
@@ -46,5 +46,9 @@ public class BaseballGame {
 
     private void createChillingMessage(){
 
+    }
+
+    public int getRoundCounts() {
+        return roundCounts;
     }
 }
