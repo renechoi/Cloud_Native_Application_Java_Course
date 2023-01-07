@@ -20,6 +20,7 @@ public class BaseballGame {
             this.player = Player.getPlayerBaseball(3);
             Baseball playerBaseball = player.getBaseball();
             this.baseballJudge = new BaseballJudge(computer.getBaseball(), player.getBaseball());
+            System.out.print(baseballJudge.getResultMessage());
 
         } while (!isPlayerWin());
 

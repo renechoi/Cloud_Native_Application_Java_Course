@@ -7,22 +7,18 @@ import java.util.stream.IntStream;
 public class BaseballJudge {
     private int strikeCount;
     private int ballCounts;
-    private String nothingCounts;
     private String resultMessage;
     private boolean isSuccess;
 
     public BaseballJudge(Baseball computers, Baseball players) {
         this.strikeCount = countStrike(computers, players);
         this.ballCounts = countBalls(computers, players);
-        this.nothingCounts = countNothing();
         this.resultMessage = formatMessage();
     }
 
-    private String countNothing() {
-        if (this.ballCounts == 0 && this.strikeCount == 0) {
-            return "낫싱";
-        }
-        return "";
+    private boolean isNothing() {
+        return this.ballCounts == 0 && this.strikeCount == 0;
+
     }
 
     public int countStrike(Baseball computers, Baseball players) {
@@ -43,12 +39,20 @@ public class BaseballJudge {
     }
 
 
-
-    private String formatMessage(){
-        return String.format("""
-                스트라이크 %s
-                볼 %s %s
-                """, strikeCount, ballCounts, nothingCounts);
+    private String formatMessage() {
+        return (isNothing() ?
+                """
+                
+                낫싱! 잘 좀 하세요!
+                ^--------------^
+                
+                """ :
+                String.format("""
+                        
+                        %s 스트라이크
+                        %s 볼
+                        
+                        """, strikeCount, ballCounts));
     }
 
     public String getResultMessage() {
