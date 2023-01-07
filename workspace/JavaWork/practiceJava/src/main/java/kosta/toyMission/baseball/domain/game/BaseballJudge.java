@@ -1,5 +1,6 @@
 package kosta.toyMission.baseball.domain.game;
 
+import kosta.toyMission.baseball.GameController;
 import kosta.toyMission.baseball.domain.computer.Baseball;
 
 import java.util.stream.IntStream;
@@ -22,13 +23,13 @@ public class BaseballJudge {
     }
 
     public int countStrike(Baseball computers, Baseball players) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(0, GameController.BASEBALL_SIZE)
                 .filter(i -> computers.toNumbers().get(i).equals(players.toNumbers().get(i)))
                 .count();
     }
 
     public int countBalls(Baseball computers, Baseball players) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(0, GameController.BASEBALL_SIZE)
                 .filter(i -> !computers.toNumbers().get(i).equals(players.toNumbers().get(i)))
                 .filter(i -> {
                     return computers.toNumbers().stream()
