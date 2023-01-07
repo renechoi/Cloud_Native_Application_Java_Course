@@ -16,7 +16,7 @@ public class BaseballReceiver {
         try {
             formatAsBaseball(baseballSize, getPlayerNumbers(baseballSize), playerNumbers);
             return new Baseball(playerNumbers);
-        }catch (invalidPlayerNumberFormatException | invalidPlayerRawInputException e){
+        } catch (invalidPlayerNumberFormatException | invalidPlayerRawInputException e) {
             return receivePlayerBaseball(baseballSize);
         }
     }
