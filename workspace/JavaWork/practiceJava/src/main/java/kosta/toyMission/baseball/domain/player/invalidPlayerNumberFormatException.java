@@ -1,5 +1,7 @@
 package kosta.toyMission.baseball.domain.player;
 
+import kosta.toyMission.baseball.ui.outputView.OutputView;
+
 public class invalidPlayerNumberFormatException extends IllegalArgumentException {
 
     public static final String NUMBER_NOT_IN_PROPER_DIGIT = "3자리 숫자만 입력하세요!\n";
@@ -8,6 +10,6 @@ public class invalidPlayerNumberFormatException extends IllegalArgumentException
 
     public invalidPlayerNumberFormatException(String message) {
         super(message);
-        System.out.println(message);
+        OutputView.printExceptionMessage(message);
     }
 }

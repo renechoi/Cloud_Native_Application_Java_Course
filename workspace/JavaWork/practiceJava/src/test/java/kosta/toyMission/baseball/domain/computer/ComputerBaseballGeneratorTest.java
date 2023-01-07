@@ -12,7 +12,7 @@ class ComputerBaseballGeneratorTest {
     void verify_Computer_Baseball_Generation(){
 
         ComputerBaseballGenerator computerBaseballGenerator =new ComputerBaseballGenerator(new ComputerNumberGenerator());
-        Baseball baseball =  computerBaseballGenerator.makeBaseball(3);
+        Baseball baseball =  computerBaseballGenerator.makeBaseball();
         int actual = baseball.toNumbers().size();
         int expected = (int) baseball.toNumbers().stream().distinct().count();
 

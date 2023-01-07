@@ -26,7 +26,9 @@ public class BaseballReceiver {
     }
 
     private void formatAsBaseball(String numberReceived, List<Integer> playerNumbers) {
-        int[] numbersEach = numberReceived.chars().map(Character::getNumericValue).toArray();
+        int[] numbersEach = numberReceived.chars()
+                .map(Character::getNumericValue)
+                .toArray();
 
         for (int i = 0; i < GameController.BASEBALL_SIZE; i++) {
             int eachDigit = numbersEach[i];
