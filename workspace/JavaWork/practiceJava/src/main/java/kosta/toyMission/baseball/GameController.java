@@ -11,9 +11,9 @@ public class GameController {
     public static final int BASEBALL_NUMBER_START_INCLUSIVE = 1;
     public static final int BASEBALL_NUMBER_END_INCLUSIVE = 9;
     public static int BASEBALL_SIZE = 3;
-
     public static final String HINT_DIAL = "#";
     public static final String CHEAT_KEY_DIAL = "##";
+    public static String PREVIOUS_HELP_COMMAND ="";
 
     public void run() {
         OutputView.printStartMessage();

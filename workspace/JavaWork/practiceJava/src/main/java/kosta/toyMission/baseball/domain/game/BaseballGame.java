@@ -5,6 +5,9 @@ import kosta.toyMission.baseball.domain.computer.Computer;
 import kosta.toyMission.baseball.domain.player.Player;
 import kosta.toyMission.baseball.ui.outputView.OutputView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BaseballGame {
 
     public static final int HINT_CONDITION = 6;
@@ -34,14 +37,24 @@ public class BaseballGame {
     }
 
     public void handleHelpCommand() {
-        if (roundCounts == HINT_CONDITION) {
-            // Todo : create hint info
-            OutputView.printHintMessage2();
+        List<Integer> computers = computer.getBaseball().toNumbers();
+        List<Integer> players = player.getBaseball().toNumbers();
+
+        if (GameController.PREVIOUS_HELP_COMMAND.equals(GameController.HINT_DIAL)) {
+            List<String> hints = new ArrayList<>();
+
+            for (int i = 0; i < GameController.BASEBALL_SIZE; i++) {
+                String hint = computers.get(i) > players.get(i) ? "up" :
+                        (computers.get(i) < players.get(i) ? "down" : "equal");
+                hints.add(hint);
+            }
+            OutputView.printHintMessage2(hints);
+            roundCounts++;
         }
 
-        if (roundCounts == CHEAT_KEY_CONDITION) {
-            // Todo : create cheat key info
-            OutputView.printCheatKeyMessage2();
+        if (GameController.PREVIOUS_HELP_COMMAND.equals(GameController.CHEAT_KEY_DIAL)) {
+            OutputView.printCheatKeyMessage2(computers.get(0));
+            roundCounts++;
         }
     }
 
@@ -53,14 +66,6 @@ public class BaseballGame {
         if (roundCounts == CHEAT_KEY_CONDITION) {
             OutputView.printCheatKeyMessage1(roundCounts);
         }
-    }
-
-    private void createChillingMessage() {
-
-    }
-
-    public Player getPlayer() {
-        return player;
     }
 
     public int getRoundCounts() {

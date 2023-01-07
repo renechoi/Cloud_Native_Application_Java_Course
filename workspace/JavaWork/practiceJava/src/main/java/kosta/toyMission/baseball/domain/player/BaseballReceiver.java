@@ -25,6 +25,7 @@ public class BaseballReceiver {
     private String getPlayerNumbers() {
         String playerNumbers = InputView.getPlayerNumbers();
         if (GameController.HINT_DIAL.equals(playerNumbers) || GameController.CHEAT_KEY_DIAL.equals(playerNumbers)){
+            GameController.PREVIOUS_HELP_COMMAND = playerNumbers;
             throw new HelpCommandException();
         }
         return validateDigits(playerNumbers);
