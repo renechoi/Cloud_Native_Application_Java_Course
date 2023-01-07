@@ -13,9 +13,9 @@ public class Player {
         this.baseball = baseball;
     }
 
-    public static Player getPlayerBaseball(int baseballSize) {
+    public static Player getPlayerBaseball() {
         BaseballReceiver baseballReceiver = new BaseballReceiver();
-        Baseball playerBaseball = baseballReceiver.receivePlayerBaseball(baseballSize);
+        Baseball playerBaseball = baseballReceiver.receivePlayerBaseball();
         return new Player(playerBaseball);
     }
 

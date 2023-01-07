@@ -9,10 +9,10 @@ import kosta.toyMission.baseball.domain.player.Player;
 public class GameController {
     public static final int BASEBALL_NUMBER_START_INCLUSIVE = 1;
     public static final int BASEBALL_NUMBER_END_INCLUSIVE = 9;
-    private final int BASEBALL_SIZE = 3;
+    public static final int BASEBALL_SIZE = 3;
 
     public void play() {
-        Computer computer = Computer.createBaseball(BASEBALL_SIZE);
+        Computer computer = Computer.createBaseball();
         Baseball computerbaseball = computer.getBaseball();
 
 //        Player player = Player.getPlayerBaseball(BASEBALL_SIZE);

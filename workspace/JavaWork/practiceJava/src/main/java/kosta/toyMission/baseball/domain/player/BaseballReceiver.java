@@ -10,33 +10,33 @@ import java.util.List;
 
 public class BaseballReceiver {
 
-    public Baseball receivePlayerBaseball(int baseballSize) {
+    public Baseball receivePlayerBaseball() {
         List<Integer> playerNumbers = new ArrayList<>();
 
         try {
-            formatAsBaseball(baseballSize, getPlayerNumbers(baseballSize), playerNumbers);
+            formatAsBaseball(getPlayerNumbers(), playerNumbers);
             return new Baseball(playerNumbers);
         } catch (invalidPlayerNumberFormatException | invalidPlayerRawInputException e) {
-            return receivePlayerBaseball(baseballSize);
+            return receivePlayerBaseball();
         }
     }
 
-    private String getPlayerNumbers(int baseballSize) {
-        return validateDigits(InputView.getPlayerNumbers(), baseballSize);
+    private String getPlayerNumbers() {
+        return validateDigits(InputView.getPlayerNumbers());
     }
 
-    private void formatAsBaseball(int baseballSize, String numberReceived, List<Integer> playerNumbers) {
+    private void formatAsBaseball(String numberReceived, List<Integer> playerNumbers) {
         int[] numbersEach = numberReceived.chars().map(Character::getNumericValue).toArray();
 
-        for (int i = 0; i < baseballSize; i++) {
+        for (int i = 0; i < GameController.BASEBALL_SIZE; i++) {
             int eachDigit = numbersEach[i];
             validateEachNumber(eachDigit, playerNumbers);
             playerNumbers.add(eachDigit);
         }
     }
 
-    private String validateDigits(String numberReceived, int baseballSize) {
-        if (!isDigitCorrect(numberReceived, baseballSize)) {
+    private String validateDigits(String numberReceived) {
+        if (!isDigitCorrect(numberReceived)) {
             throw new invalidPlayerNumberFormatException(invalidPlayerNumberFormatException.NUMBER_NOT_IN_PROPER_DIGIT);
         }
         return numberReceived;
@@ -52,8 +52,8 @@ public class BaseballReceiver {
         }
     }
 
-    private static boolean isDigitCorrect(String numberReceived, int baseballSize) {
-        return numberReceived.length() == baseballSize;
+    private static boolean isDigitCorrect(String numberReceived) {
+        return numberReceived.length() == GameController.BASEBALL_SIZE;
     }
 
     private boolean isDuplicateExist(int number, List<Integer> playerNumbers) {

@@ -10,9 +10,9 @@ public class Computer {
         this.baseball = baseball;
     }
 
-    public static Computer createBaseball(int baseballSize){
+    public static Computer createBaseball(){
         ComputerBaseballGenerator computerBaseballGenerator = new ComputerBaseballGenerator(new ComputerNumberGenerator());
-        Baseball baseball = computerBaseballGenerator.makeBaseball(baseballSize);
+        Baseball baseball = computerBaseballGenerator.makeBaseball();
         return new Computer(baseball);
     }
 

@@ -1,5 +1,7 @@
 package kosta.toyMission.baseball.domain.computer;
 
+import kosta.toyMission.baseball.GameController;
+
 import java.util.*;
 
 public class ComputerBaseballGenerator {
@@ -10,10 +12,10 @@ public class ComputerBaseballGenerator {
         this.computerNumberGenerator = computerNumberGenerator;
     }
 
-    public Baseball makeBaseball(int baseballSize) {
+    public Baseball makeBaseball() {
         Set<Integer> ballNumbersRaw = new HashSet<>();
 
-        while (ballNumbersRaw.size() != baseballSize){
+        while (ballNumbersRaw.size() != GameController.BASEBALL_SIZE){
             int numberGenerated = computerNumberGenerator.generateRandomNumber();
             ballNumbersRaw.add(numberGenerated);
         }
