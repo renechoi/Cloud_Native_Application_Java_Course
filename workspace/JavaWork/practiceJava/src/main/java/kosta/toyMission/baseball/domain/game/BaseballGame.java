@@ -17,14 +17,13 @@ public class BaseballGame {
     }
 
     public void round() {
-        roundCounts = 0;
         do {
-            roundCounts++;
+            helpPlayer(++roundCounts);
+
             this.player = Player.getPlayerBaseball();
             this.baseballJudge = new BaseballJudge(computer.getBaseball(), player.getBaseball());
 
             OutputView.printResultMessage(baseballJudge.getIsNoCount(), baseballJudge.getStrikeCount(), baseballJudge.getBallCount());
-            OutputView.printTrialMessage(roundCounts);
         } while (!isPlayerWin());
     }
 
@@ -40,12 +39,18 @@ public class BaseballGame {
 
     }
 
-    private void helpPlayer(){
-
+    private void helpPlayer(int roundCounts){
+        if(roundCounts ==6){
+            OutputView.printHintMessage(roundCounts);
+        }
     }
 
     private void createChillingMessage(){
 
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     public int getRoundCounts() {

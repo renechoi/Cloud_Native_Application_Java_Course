@@ -22,7 +22,11 @@ public class BaseballReceiver {
     }
 
     private String getPlayerNumbers() {
-        return validateDigits(InputView.getPlayerNumbers());
+        String playerNumbers = InputView.getPlayerNumbers();
+        if (GameController.HINT_DIAL.equals(playerNumbers) || GameController.CHEAT_KEY_DIAL.equals(playerNumbers)){
+            throw new RuntimeException();
+        }
+        return validateDigits(playerNumbers);
     }
 
     private void formatAsBaseball(String numberReceived, List<Integer> playerNumbers) {

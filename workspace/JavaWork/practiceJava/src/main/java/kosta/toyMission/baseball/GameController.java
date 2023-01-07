@@ -14,17 +14,25 @@ public class GameController {
     public static final String HINT_DIAL = "#";
     public static final String CHEAT_KEY_DIAL = "##";
 
-    public void play() {
+    public void run() {
         OutputView.printStartMessage();
-
         setGameLevel();
         OutputView.printLevelInfoMessage();
 
         Computer computer = Computer.createBaseball();
         BaseballGame baseballGame = new BaseballGame(computer);
-        baseballGame.round();
+        System.out.println(computer.getBaseball().toNumbers());
 
+        play(baseballGame);
         retry(baseballGame);
+    }
+
+    private void play(BaseballGame baseballGame){
+        try{
+            baseballGame.round();
+        } catch (RuntimeException e){
+            play(baseballGame);
+        }
     }
 
     private void setGameLevel() {
@@ -42,7 +50,7 @@ public class GameController {
         if (validateRetry(parseInt(InputView.getRetryCommand())) == 1) {
             return;
         }
-        play();
+        run();
     }
 
     private int parseInt(String levelCommand) {
