@@ -5,16 +5,15 @@ import java.util.*;
 public class ComputerBaseballGenerator {
 
     private final ComputerNumberGenerator computerNumberGenerator;
-    private final int BASEBALL_SIZE = 3;
 
     public ComputerBaseballGenerator(ComputerNumberGenerator computerNumberGenerator) {
         this.computerNumberGenerator = computerNumberGenerator;
     }
 
-    public Baseball makeBaseball(int size) {
+    public Baseball makeBaseball(int baseballSize) {
         Set<Integer> ballNumbersRaw = new HashSet<>();
 
-        while (ballNumbersRaw.size() != BASEBALL_SIZE){
+        while (ballNumbersRaw.size() != baseballSize){
             int numberGenerated = computerNumberGenerator.generateRandomNumber();
             ballNumbersRaw.add(numberGenerated);
         }

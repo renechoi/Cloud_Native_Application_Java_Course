@@ -9,7 +9,7 @@ public class Baseball {
         this.baseball = baseball;
     }
 
-    public List<Integer> getBaseball() {
+    public List<Integer> toNumbers() {
         return baseball;
     }
 }

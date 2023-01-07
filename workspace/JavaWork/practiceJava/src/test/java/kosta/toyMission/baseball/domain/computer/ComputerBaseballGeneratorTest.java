@@ -13,8 +13,8 @@ class ComputerBaseballGeneratorTest {
 
         ComputerBaseballGenerator computerBaseballGenerator =new ComputerBaseballGenerator(new ComputerNumberGenerator());
         Baseball baseball =  computerBaseballGenerator.makeBaseball(3);
-        int actual = baseball.getBaseball().size();
-        int expected = (int) baseball.getBaseball().stream().distinct().count();
+        int actual = baseball.toNumbers().size();
+        int expected = (int) baseball.toNumbers().stream().distinct().count();
 
         assertThat(actual).isEqualTo(expected);
     }
