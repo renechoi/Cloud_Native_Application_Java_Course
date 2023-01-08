@@ -1,6 +1,6 @@
 package kosta.toyMission.baseball.domain.computer;
 
-import kosta.toyMission.baseball.GameController;
+import kosta.toyMission.baseball.controller.GameController;
 
 import java.util.*;
 

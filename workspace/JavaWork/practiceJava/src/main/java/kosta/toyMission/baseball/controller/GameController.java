@@ -1,4 +1,4 @@
-package kosta.toyMission.baseball;
+package kosta.toyMission.baseball.controller;
 
 import kosta.toyMission.baseball.domain.computer.Computer;
 import kosta.toyMission.baseball.domain.game.BaseballGame;
@@ -22,7 +22,6 @@ public class GameController {
 
         Computer computer = Computer.createBaseball();
         BaseballGame baseballGame = new BaseballGame(computer);
-        System.out.println(computer.getBaseball().toNumbers());
 
         play(baseballGame);
         retry(baseballGame);

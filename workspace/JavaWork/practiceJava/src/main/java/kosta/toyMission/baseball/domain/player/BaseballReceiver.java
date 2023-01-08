@@ -1,6 +1,6 @@
 package kosta.toyMission.baseball.domain.player;
 
-import kosta.toyMission.baseball.GameController;
+import kosta.toyMission.baseball.controller.GameController;
 import kosta.toyMission.baseball.domain.computer.Baseball;
 import kosta.toyMission.baseball.domain.game.HelpCommandException;
 import kosta.toyMission.baseball.ui.inputView.InputView;

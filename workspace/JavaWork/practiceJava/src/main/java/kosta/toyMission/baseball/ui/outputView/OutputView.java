@@ -1,6 +1,6 @@
 package kosta.toyMission.baseball.ui.outputView;
 
-import kosta.toyMission.baseball.GameController;
+import kosta.toyMission.baseball.controller.GameController;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class OutputView {
 
     public static final String REQUEST_BASEBALL_MESSAGE =
             """
-                    
+                                        
                     숫자를 입력하세요:%s""";
 
     public static final String RESULT_AS_NOTHING =
@@ -60,21 +60,20 @@ public class OutputView {
     public static final String REQUEST_RETRY_MESSAGE = "재시작하려면 0, 종료하려면 1을 입력해주세요: ";
 
     public static final String HINT_INFO_MESSAGE_1 = """
-            
+                        
             벌써 %d번째 시도군요! 힌트를 좀 드려야 할 거 같아요 :)
             #을 입력하면 힌트를 볼 수 있답니다!
             """;
 
     public static final String CHEAT_KEY_INFO_MESSAGE_1 = """
-            
+                        
             저런... 1번만 더 하면 %d번째 시도에요...!
             치트키를 알려드릴까요?
             ##을 입력해보세요 '◡'*
-            
             """;
 
     public static final String HINT_INFO_MESSAGE_2 = """
-            
+                        
             힌트를 드릴게요.
             방금 입력한 숫자보다
             첫번째는 %s, 두번째는 %s, 세번째는 %s
@@ -82,7 +81,7 @@ public class OutputView {
             """;
 
     public static final String CHEAT_KEY_INFO_MESSAGE_2 = """
-            
+                        
             치트키로 첫 번째 숫자를 알려드릴게요.
             %s 입니다!
             ^ㅡㅡㅡㅡㅡ^
@@ -96,7 +95,7 @@ public class OutputView {
         System.out.printf(REQUEST_LEVEL_MESSAGE, " ");
     }
 
-    public static void printRequestBaseballMessage(){
+    public static void printRequestBaseballMessage() {
         System.out.printf(REQUEST_BASEBALL_MESSAGE, " ");
     }
 
@@ -127,7 +126,7 @@ public class OutputView {
     }
 
     public static void printHintMessage2(List<String> hints) {
-        System.out.printf(HINT_INFO_MESSAGE_2, hints.get(0), hints.get(1),hints.get(2));
+        System.out.printf(HINT_INFO_MESSAGE_2, hints.get(0), hints.get(1), hints.get(2));
     }
 
     public static void printCheatKeyMessage2(int cheatKey) {
@@ -141,5 +140,10 @@ public class OutputView {
 
     public static void printExceptionMessage(String message) {
         System.out.println(message);
+    }
+
+    public static void printUnhandledExceptionMessage(String message) {
+        System.out.println();
+        System.out.print(message);
     }
 }

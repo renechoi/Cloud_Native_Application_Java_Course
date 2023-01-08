@@ -1,4 +1,4 @@
-package kosta.toyMission.baseball;
+package kosta.toyMission.baseball.controller;
 
 import kosta.toyMission.baseball.ui.outputView.OutputView;
 

@@ -1,16 +1,13 @@
 package kosta.toyMission.baseball.domain.computer;
 
 public class Computer {
-    private Baseball baseball;
-
-    public Computer() {
-    }
+    private final Baseball baseball;
 
     private Computer(Baseball baseball) {
         this.baseball = baseball;
     }
 
-    public static Computer createBaseball(){
+    public static Computer createBaseball() {
         ComputerBaseballGenerator computerBaseballGenerator = new ComputerBaseballGenerator(new ComputerNumberGenerator());
         Baseball baseball = computerBaseballGenerator.makeBaseball();
         return new Computer(baseball);

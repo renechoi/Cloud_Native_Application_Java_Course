@@ -1,6 +1,6 @@
 package kosta.toyMission.baseball.domain.game;
 
-import kosta.toyMission.baseball.GameController;
+import kosta.toyMission.baseball.controller.GameController;
 import kosta.toyMission.baseball.domain.computer.Baseball;
 
 import java.util.stream.IntStream;
