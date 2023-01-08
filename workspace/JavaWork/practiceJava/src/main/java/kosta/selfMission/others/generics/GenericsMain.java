@@ -5,6 +5,31 @@ import java.util.List;
 
 public class GenericsMain {
 
+
+    static void lowerBoundWildCard(List<? super Number> numbers){
+        // Number 클래스의 하위 클래스인 이상 아무 종류나
+        numbers.add(1);
+        numbers.add(1.0);
+        numbers.add(1L);
+    }
+
+
+    // upper bound wild card
+    static double upperBoundWildCard(List<? extends Number> numbers){
+        // Number 클래스를 extends 한 아무 종류의 리스트
+        double sum = 0.0;
+        for (Number number : numbers){
+            sum += number.doubleValue();
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+
+
+
+    }
+
     static <X> X doSomthing(X value){   // X라는 종류를 받아서 X 종류를 리턴한다
         return value;
     }
@@ -13,13 +38,10 @@ public class GenericsMain {
         value.add(value);
     }
 
-    public static void main(String[] args) {
-
+    private static void genericsExtension() {
         doSomthing(new String());
         doSomthing(Integer.valueOf(5));
         doSomthing(new ArrayList<>());
-
-
     }
 
     private static void genericsRestriction() {
@@ -51,4 +73,6 @@ public class GenericsMain {
 //        MyCustomList list2 = new MyCustomList();
 //        list2.addElement(5);
     }
+
+
 }
