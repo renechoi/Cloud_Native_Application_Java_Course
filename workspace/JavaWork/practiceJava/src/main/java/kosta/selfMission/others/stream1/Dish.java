@@ -1,4 +1,4 @@
-package kosta.selfMission.others.stream;
+package kosta.selfMission.others.stream1;
 
 public class Dish {
     private final String name;

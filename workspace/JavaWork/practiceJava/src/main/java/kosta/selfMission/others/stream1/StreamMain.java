@@ -1,4 +1,4 @@
-package kosta.selfMission.others.stream;
+package kosta.selfMission.others.stream1;
 
 import java.util.*;
 import java.util.stream.IntStream;
