@@ -10,8 +10,18 @@ public class StreamMain {
 
 
 
+    }
 
+    private static void practiceStreamInfinite() {
+        Stream.iterate(new int[]{0,1},
+                ints -> new int[] { ints[1], ints[0] + ints[1]})
+                .limit(10)
+                .map(t->t[0])
+                .forEach(System.out::println);
 
+        Stream.generate(Math::random)
+                .limit(5)
+                .forEach(System.out::println);
     }
 
     private static void pythagoreanTriples() {
