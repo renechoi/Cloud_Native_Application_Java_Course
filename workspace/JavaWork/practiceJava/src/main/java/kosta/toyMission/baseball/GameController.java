@@ -32,8 +32,7 @@ public class GameController {
         try {
             baseballGame.round();
         } catch (HelpCommandException e) {
-            baseballGame.setCountsBack();
-            baseballGame.handleHelpCommand();
+            baseballGame.handleHelp();
             play(baseballGame);
         }
     }
@@ -41,7 +40,7 @@ public class GameController {
     private void setGameLevel() {
         OutputView.printRequestLevelMessage();
         try {
-            BASEBALL_SIZE = validateLevel(parseInt(InputView.getGameLevelCommand())) + 2;
+            BASEBALL_SIZE = validateLevel(parseLevel(InputView.getGameLevelCommand())) + 2;
         } catch (invalidLevelCommandException e) {
             setGameLevel();
         }
@@ -50,17 +49,25 @@ public class GameController {
     private void retry(BaseballGame baseballGame) {
         OutputView.printSuccessMessage(baseballGame.getRoundCounts());
         OutputView.printRetryMessage();
-        if (validateRetry(parseInt(InputView.getRetryCommand())) == 1) {
+        if (validateRetry(parseRetry(InputView.getRetryCommand())) == 1) {
             return;
         }
         run();
     }
 
-    private int parseInt(String levelCommand) {
+    private int parseLevel(String levelCommand) {
         try {
             return Integer.parseInt(levelCommand);
         } catch (NumberFormatException e) {
             throw new invalidLevelCommandException(invalidLevelCommandException.LEVEL_NOT_NUMBER);
+        }
+    }
+
+    private int parseRetry(String retryCommand) {
+        try {
+            return Integer.parseInt(retryCommand);
+        } catch (NumberFormatException e) {
+            throw new invalidRetryCommandException(invalidRetryCommandException.RETRY_NOT_NUMBER);
         }
     }
 

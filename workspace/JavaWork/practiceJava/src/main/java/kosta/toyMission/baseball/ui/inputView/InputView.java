@@ -1,15 +1,15 @@
 package kosta.toyMission.baseball.ui.inputView;
 
+import kosta.toyMission.baseball.ui.outputView.OutputView;
+
 import java.util.Scanner;
 
 public class InputView {
 
     private static final Scanner SCANNER = new Scanner(System.in);
-    public static final String REQUEST_PLAYER_NUMBER = "\n숫자를 입력하세요: ";
-
 
     public static String getPlayerNumbers() {
-        System.out.print(REQUEST_PLAYER_NUMBER);
+        OutputView.printRequestBaseballMessage();
         return getInput();
     }
 

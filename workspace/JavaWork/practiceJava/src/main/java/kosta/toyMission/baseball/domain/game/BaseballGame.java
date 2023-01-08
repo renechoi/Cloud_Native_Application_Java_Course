@@ -5,9 +5,6 @@ import kosta.toyMission.baseball.domain.computer.Computer;
 import kosta.toyMission.baseball.domain.player.Player;
 import kosta.toyMission.baseball.ui.outputView.OutputView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BaseballGame {
 
     public static final int HINT_CONDITION = 6;
@@ -36,26 +33,13 @@ public class BaseballGame {
         return baseballJudge.getStrikeCount() == GameController.BASEBALL_SIZE;
     }
 
-    public void handleHelpCommand() {
-        List<Integer> computers = computer.getBaseball().toNumbers();
-        List<Integer> players = player.getBaseball().toNumbers();
+    public void handleHelp() {
+        setCountsDown();
 
-        if (GameController.PREVIOUS_HELP_COMMAND.equals(GameController.HINT_DIAL)) {
-            List<String> hints = new ArrayList<>();
+        Helper.parseHelp(GameController.PREVIOUS_HELP_COMMAND)
+                .provideHelp(computer.getBaseball().toNumbers(), player.getBaseball().toNumbers());
 
-            for (int i = 0; i < GameController.BASEBALL_SIZE; i++) {
-                String hint = computers.get(i) > players.get(i) ? "up" :
-                        (computers.get(i) < players.get(i) ? "down" : "equal");
-                hints.add(hint);
-            }
-            OutputView.printHintMessage2(hints);
-            roundCounts++;
-        }
-
-        if (GameController.PREVIOUS_HELP_COMMAND.equals(GameController.CHEAT_KEY_DIAL)) {
-            OutputView.printCheatKeyMessage2(computers.get(0));
-            roundCounts++;
-        }
+        setCountsUp();
     }
 
     private void helpPlayer(int roundCounts) {
@@ -72,7 +56,11 @@ public class BaseballGame {
         return roundCounts;
     }
 
-    public void setCountsBack() {
+    public void setCountsDown() {
         this.roundCounts = roundCounts - 1;
+    }
+
+    public void setCountsUp() {
+        this.roundCounts = roundCounts + 1;
     }
 }
