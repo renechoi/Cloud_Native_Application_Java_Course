@@ -3,7 +3,10 @@ package kosta.selfMission.others.generics;
 public class GenericsMain {
     public static void main(String[] args) {
 
-        withGenericsProblemSolved();
+        MyCustomListOnlyNumber<Integer> myCustomListOnlyNumber = new MyCustomListOnlyNumber<>();
+        myCustomListOnlyNumber.addElement(1);
+//        myCustomListOnlyNumber.addElement("1"); // 에러 발생
+
 
     }
 
