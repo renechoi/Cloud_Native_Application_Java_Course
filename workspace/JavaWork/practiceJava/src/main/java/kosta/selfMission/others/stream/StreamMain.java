@@ -1,6 +1,8 @@
 package kosta.selfMission.others.stream;
 
 import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class StreamMain {
 
@@ -8,16 +10,65 @@ public class StreamMain {
 
 
 
+
+
+    }
+
+    private static void pythagoreanTriples() {
+        Stream<Object> pythagoreanTriples =
+                IntStream.rangeClosed(1, 100).boxed() // Stream<Integer>로 변환
+                        .flatMap(a ->
+                                IntStream.rangeClosed(a, 100)
+                                        .filter(b -> Math.sqrt(a * a + b * b) % 1 == 0)
+                                        .mapToObj(b -> new int[]{a, b, (int) Math.sqrt(a * a + b * b)})
+                        );
+
+        pythagoreanTriples.limit(5)
+                .forEach(t -> System.out.println(Arrays.toString((int[]) t)));
+    }
+
+    private static void practiceIntStream2() {
+        // 숫자 범위 지정하기
+        IntStream evenNumbers = IntStream.rangeClosed(1, 100)
+                .filter(n -> n % 2 == 0);
+    }
+
+    private static void practiceIntStream() {
+        List<Dish> menu = Arrays.asList(
+                new Dish("pork", false, 800, Dish.Type.MEAT),
+                new Dish("beef", false, 700, Dish.Type.MEAT),
+                new Dish("chicken", false, 500, Dish.Type.MEAT),
+                new Dish("french fries", false, 300, Dish.Type.OTHER),
+                new Dish("rice", true, 400, Dish.Type.MEAT),
+                new Dish("season", false, 500, Dish.Type.MEAT),
+                new Dish("pizza", true, 200, Dish.Type.MEAT),
+                new Dish("prawns", false, 100, Dish.Type.FISH),
+                new Dish("salmon", false, 800, Dish.Type.FISH)
+        );
+
+        // 모든 칼로리를 integer 형식으로 추출한 다음에 intstream을 반환.
+        // intstream의 메서드를 통해 연산
+        int caclories = menu.stream()
+                .mapToInt(Dish::getCalories)
+                .sum();
+
+        // IntStream의 최댓값 요소 찾기
+        OptionalInt maxCalories = menu.stream()
+                .mapToInt(Dish::getCalories)
+                .max();
+
+        int max = maxCalories.orElse(1);
+
     }
 
     private static void practiceStreamReducing() {
-        int[] numbers = {1,2,3,4,5};
+        int[] numbers = {1, 2, 3, 4, 5};
         int sum = 0;
         for (int x : numbers) {
-            sum +=x;
+            sum += x;
         }
 
-        int sum2 = Arrays.stream(numbers).reduce(0, (a,b)-> a+b);
+        int sum2 = Arrays.stream(numbers).reduce(0, (a, b) -> a + b);
         int sum3 = Arrays.stream(numbers).reduce(0, Integer::sum);
 
 
@@ -27,10 +78,10 @@ public class StreamMain {
     }
 
     private static void practiceFindFirst() {
-        List<Integer> someNumbers = Arrays.asList(1,2,3,4,5);
+        List<Integer> someNumbers = Arrays.asList(1, 2, 3, 4, 5);
         Optional<Integer> firstSquareDivisibleByThree = someNumbers.stream()
                 .map(n -> n * n)
-                .filter(n -> n%3 == 0)
+                .filter(n -> n % 3 == 0)
                 .findFirst(); // 9
     }
 
