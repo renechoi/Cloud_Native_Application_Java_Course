@@ -1,16 +1,40 @@
 package kosta.selfMission.others.stream;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class StreamMain {
 
-
     public static void main(String[] args) {
 
+
+
+    }
+
+    private static void practiceStreamReducing() {
+        int[] numbers = {1,2,3,4,5};
+        int sum = 0;
+        for (int x : numbers) {
+            sum +=x;
+        }
+
+        int sum2 = Arrays.stream(numbers).reduce(0, (a,b)-> a+b);
+        int sum3 = Arrays.stream(numbers).reduce(0, Integer::sum);
+
+
+        OptionalInt max = Arrays.stream(numbers).reduce(Integer::max);
+
+        OptionalInt min = Arrays.stream(numbers).reduce(Integer::min);
+    }
+
+    private static void practiceFindFirst() {
+        List<Integer> someNumbers = Arrays.asList(1,2,3,4,5);
+        Optional<Integer> firstSquareDivisibleByThree = someNumbers.stream()
+                .map(n -> n * n)
+                .filter(n -> n%3 == 0)
+                .findFirst(); // 9
+    }
+
+    private static void practiceFindAny() {
         List<Dish> menu = Arrays.asList(
                 new Dish("pork", false, 800, Dish.Type.MEAT),
                 new Dish("beef", false, 700, Dish.Type.MEAT),
@@ -23,21 +47,54 @@ public class StreamMain {
                 new Dish("salmon", false, 800, Dish.Type.FISH)
         );
 
-        externalLoopVsInternalLoop(menu);
+        Optional<Dish> dishes = menu.stream()
+                .filter(Dish::isVegetarian)
+                .findAny();
+//                .ifPresent(dish -> s)
+    }
 
+    private static void practiceFlatMap() {
+        // 두개의 리스트 [1,2,3] 과 [3,4]가 주어졌을 때
+        // (1,3) (1,4) (2,3) (2,4) (3,3) (3,4)를 반환하기
 
+        List<Integer> number1 = Arrays.asList(1, 2, 3);
+        List<Integer> number2 = Arrays.asList(3, 4);
+
+        List<int[]> pairs = number1.stream()
+                .flatMap(i -> number2.stream()
+                        .map(j -> new int[]{i, j}))
+                .toList();
+    }
+
+    private static void practiceMapping2() {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> squares = numbers.stream()
+                .map(n -> n * n)
+                .toList();
+    }
+
+    private static void practiceMapping() {
+        List<String> words = Arrays.asList("Modern", "java", "in", "action");
+        List<Integer> wordLengths = words.stream()
+                .map(String::length)
+                .toList();
+
+        System.out.println(words);
+        System.out.println(wordLengths);
     }
 
     private static void externalLoopVsInternalLoop(List<Dish> menu) {
+
+
         List<String> names = new ArrayList<>();
-        for (Dish dish: menu){             // 메뉴 리스트를 명시적으로 순차 반복한다.
+        for (Dish dish : menu) {             // 메뉴 리스트를 명시적으로 순차 반복한다.
             names.add(dish.getName());    // 이름을 추출해서 리스트에 추가한다.
 
         }
 
 
         Iterator<Dish> iterator = menu.iterator();
-        while (iterator.hasNext()){         // 명시적 반복
+        while (iterator.hasNext()) {         // 명시적 반복
             Dish dish = iterator.next();
             names.add(dish.getName());
         }
