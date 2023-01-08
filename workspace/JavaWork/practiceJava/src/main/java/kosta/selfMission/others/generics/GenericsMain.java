@@ -1,13 +1,31 @@
 package kosta.selfMission.others.generics;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GenericsMain {
+
+    static <X> X doSomthing(X value){   // X라는 종류를 받아서 X 종류를 리턴한다
+        return value;
+    }
+
+    static <X extends List> void anythingThatExtendsList(X value){   // X라는 종류를 받아서 X 종류를 리턴한다
+        value.add(value);
+    }
+
     public static void main(String[] args) {
 
+        doSomthing(new String());
+        doSomthing(Integer.valueOf(5));
+        doSomthing(new ArrayList<>());
+
+
+    }
+
+    private static void genericsRestriction() {
         MyCustomListOnlyNumber<Integer> myCustomListOnlyNumber = new MyCustomListOnlyNumber<>();
         myCustomListOnlyNumber.addElement(1);
 //        myCustomListOnlyNumber.addElement("1"); // 에러 발생
-
-
     }
 
     private static void withGenericsProblemSolved() {
