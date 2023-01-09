@@ -9,6 +9,14 @@ public class Main {
         BoardService boardService2 = new BoardService(new OracleDao());
         boardService2.insertBoard();
 
+        BoardService msSql = new BoardService(new Dao() {
+            @Override
+            public void insert() {
+                System.out.println("anonymous class msSql! ");
+            }
+        });
+        msSql.insertBoard();
+
 
     }
 }
