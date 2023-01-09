@@ -1,8 +1,54 @@
 package kosta.basic.day015.api.string;
 
+import java.util.Arrays;
+import java.util.Queue;
+import java.util.stream.Collectors;
+
 public class StringMain {
+
+    public static String QUERY = "select * from board";
+
     public static void main(String[] args) {
 
+        if (QUERY.endsWith("jpg")){
+            System.out.println("this is img!");
+        }
+
+    }
+
+    private static void practiceSubstring() {
+        String query = "select * from board";
+
+        // 퀴즈 query 에서 board 문자열만 추출해서 출력해보자
+
+        System.out.println(query.substring(14,19));
+
+        String fileName = "kosta.jpg";
+        String head = fileName.replace(".jpg", "");
+        String head2 = fileName.substring(0, fileName.indexOf("."));
+        String tail = fileName.substring(fileName.indexOf(".")+1);
+
+        System.out.printf("%s : %s", head2, tail);
+
+
+
+    }
+
+    private static void stringMethodExamples() {
+        // 해당 문자열의 위치를 찾기 !
+        // indexOf : 있으면 해당 문자열, 없으면 -1
+        String query = "select * from board";
+
+        System.out.println(query.indexOf("*"));
+        System.out.println(query.indexOf("board"));
+        System.out.println(query.indexOf("$"));
+
+        System.out.println(query.length());
+
+        System.out.println(query.charAt(0));    // 범위 초과시 StringIndexOutOfBoundsException
+
+        System.out.println(query.substring(9, 19));
+        System.out.println(query.substring(9));
     }
 
     private static void stringConcatenationExample() {
