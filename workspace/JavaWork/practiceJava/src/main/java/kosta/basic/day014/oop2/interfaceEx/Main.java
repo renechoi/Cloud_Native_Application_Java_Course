@@ -20,5 +20,6 @@ public class Main {
         BoardService mongoDb = new BoardService( ()-> System.out.println("구현을 해보자!") );
 
 
+
     }
 }
