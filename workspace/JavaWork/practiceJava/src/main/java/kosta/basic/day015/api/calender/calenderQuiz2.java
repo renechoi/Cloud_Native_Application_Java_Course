@@ -29,9 +29,7 @@ public class calenderQuiz2 {
     private static void drawDays() {
         IntStream.range(0, WEEK_DAYS.length)
                 .mapToObj(i -> WEEK_DAYS[i])
-                .forEach((v) -> stringBuilder
-                        .append(v)
-                        .append("\t"));
+                .forEach((v) -> stringBuilder.append(v).append("\t"));
 
         stringBuilder.append("\n");
     }
@@ -42,14 +40,16 @@ public class calenderQuiz2 {
 
         IntStream.range(1, counts + 1).forEach((x) -> {
             Runnable draw =
-                    weekCounts < 7 ? () -> addFirstWeek() :
-                            x % 8 != 0 ? () -> stringBuilder.append(x).append("\t") : () -> stringBuilder.append("\n");
+                    weekCounts < 7 ? () -> drawFirstWeek(x) :
+                            x % 8 != 0 ? () -> stringBuilder.append(x).append("\t") :
+                                    () -> stringBuilder.append("\n");
             draw.run();
         });
     }
 
-    public static void addFirstWeek() {
+    public static void drawFirstWeek(int date) {
         weekCounts++;
+        stringBuilder.append(date).append("\t");
     }
 
     private static int getDayBegins(int year, int month, int date) {
