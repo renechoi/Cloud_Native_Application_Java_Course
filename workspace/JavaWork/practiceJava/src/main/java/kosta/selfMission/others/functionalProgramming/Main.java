@@ -7,8 +7,24 @@ public class Main {
 
         List<String> lists = List.of("Apple", "Banana", "Cat", "Dog", "Bat");
 
-        printWithFiltering(lists);
+        summationWithFp();
 
+    }
+
+    private static void summationWithFp() {
+        /**
+         * 기존의 for문을 이용한 sum을 구할 때와는 달리
+         * local variable이나 mutations, loop 등을 신경쓸 필요 없다
+         * Fp는 그저 명령할 뿐이다
+         *
+         * 또한 명령을 수행함에 있어 구체적인 방법을 정하지 않는다
+         * just saying what to do and not how to do
+         */
+
+        List<Integer> numbers = List.of(4, 5, 6, 7, 8, 3, 15);
+        int sum = numbers.stream()
+                .filter(v -> v % 2 == 0)
+                .reduce(0, (number1, number2) -> number1 + number2);
     }
 
     private static void printWithFiltering(List<String> lists) {
