@@ -2,7 +2,7 @@ package kosta.selfMission.others.functionalProgramming;
 
 import java.util.List;
 
-public class Main {
+public class FpBasics {
     public static void main(String[] args) {
 
         List<String> lists = List.of("Apple", "Banana", "Cat", "Dog", "Bat");
