@@ -11,10 +11,9 @@ public class calenderQuiz2 {
 
     public static void main(String[] args) {
 
-        for (int i = 1; i <= 12; i++) {
-
+        IntStream.range(1, 13).forEach((i)->{
             stringBuilder = new StringBuilder();
-            System.out.printf("<%s월> \n", i);
+            stringBuilder.append(String.format("<%s월>",i)).append("\n");
 
             int monthCounts = getMonthCounts(2023, i, 1);
             int dayBegins = getDayBegins(2023, i, 1);
@@ -22,9 +21,8 @@ public class calenderQuiz2 {
             drawDays();
             drawDates(monthCounts, dayBegins);
 
-            System.out.println(stringBuilder);
-            System.out.println();
-        }
+            System.out.println(stringBuilder+"\n");
+        });
     }
 
     private static void drawDays() {
