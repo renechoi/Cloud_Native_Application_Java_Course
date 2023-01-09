@@ -9,6 +9,7 @@ public class StringMain {
     public static void main(String[] args) {
 
 
+
     }
 
     private static boolean isPalindrome1(String str) {
