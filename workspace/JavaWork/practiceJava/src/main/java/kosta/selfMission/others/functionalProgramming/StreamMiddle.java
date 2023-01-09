@@ -7,15 +7,18 @@ public class StreamMiddle {
     public static void main(String[] args) {
 
 
+
+
+
+    }
+
+    private static void streamMiddles() {
         IntStream.range(1,11).forEach(n->System.out.println(n));
         IntStream.range(1,11).map(e-> e* e).forEach(n->System.out.println(n));
 
 
         List.of("Apple", "Ant", "Bat").stream().map(s->s.toLowerCase()).forEach(System.out::println);
         List.of("Apple", "Ant", "Bat").stream().map(s->s.length()).forEach(System.out::println);
-
-
-
     }
 
     private static void sortDistinctMap() {
