@@ -1,8 +1,6 @@
 package kosta.basic.day015.api.string;
 
 import java.util.Arrays;
-import java.util.Queue;
-import java.util.stream.Collectors;
 
 public class StringMain {
 
@@ -10,10 +8,39 @@ public class StringMain {
 
     public static void main(String[] args) {
 
+        byte[] bytesArray = QUERY.getBytes();
+        char[] charsArray = QUERY.toCharArray();
+
+        System.out.println(Arrays.toString(bytesArray));
+        System.out.println(Arrays.toString(charsArray));
+
+    }
+
+    private static void convertToString() {
+        int n = 10;
+        String s = n + "";
+        String s2 = String.valueOf(n);
+    }
+
+    private static void stringToArray() {
+        String fruits = "사과/포도/수박/배";
+        String[] fruitSets = fruits.split("/");
+        System.out.println(Arrays.toString(fruitSets));
+    }
+
+    private static void practiceEqualsIgnoreCase() {
+        String id = "kosta";
+        String id2 = "KOSTA";
+
+        if (id.equalsIgnoreCase(id2)){
+            System.out.println("같다");
+        }
+    }
+
+    private static void practiceEndsWtih() {
         if (QUERY.endsWith("jpg")){
             System.out.println("this is img!");
         }
-
     }
 
     private static void practiceSubstring() {
