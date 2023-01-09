@@ -7,23 +7,24 @@ public class calenderQuiz2 {
 
     public static final char[] WEEK_DAYS = new char[]{'일', '월', '화', '수', '목', '금', '토'};
     private static int weekCounts;
-    private static final StringBuilder stringBuilder = new StringBuilder();
+    private static StringBuilder stringBuilder;
 
     public static void main(String[] args) {
 
-        // 2023년 2월 달력 만들기
-        // <2023년 2월>
-        // 일 월 화 수 목 금 토
-        //        1 2  3 4
-        // 5 6 7 8  9  10 11
+        for (int i = 1; i <= 12; i++) {
 
-        int counts = getMonthCounts(2023, 2, 1);
-        int dayBegins = getDayBegins(2023, 2, 1);
+            stringBuilder = new StringBuilder();
+            System.out.printf("<%s월> \n", i);
 
-        drawDays();
-        drawDates(counts, dayBegins);
+            int monthCounts = getMonthCounts(2023, i, 1);
+            int dayBegins = getDayBegins(2023, i, 1);
 
-        System.out.println(stringBuilder);
+            drawDays();
+            drawDates(monthCounts, dayBegins);
+
+            System.out.println(stringBuilder);
+            System.out.println();
+        }
     }
 
     private static void drawDays() {
@@ -34,22 +35,16 @@ public class calenderQuiz2 {
         stringBuilder.append("\n");
     }
 
-    private static void drawDates(int counts, int dayBegins) {
+    private static void drawDates(int monthCounts, int dayBegins) {
         weekCounts = dayBegins;
         stringBuilder.append("\t".repeat(dayBegins - 1));
 
-        IntStream.range(1, counts + 1).forEach((x) -> {
+        IntStream.range(0, monthCounts).forEach((x) -> {
             Runnable draw =
-                    weekCounts < 7 ? () -> drawFirstWeek(x) :
-                            x % 8 != 0 ? () -> stringBuilder.append(x).append("\t") :
-                                    () -> stringBuilder.append("\n");
+                    (weekCounts + x) % 7 != 0 ? () -> stringBuilder.append(x + 1).append("\t") :
+                            () -> stringBuilder.append(x + 1).append("\n");
             draw.run();
         });
-    }
-
-    public static void drawFirstWeek(int date) {
-        weekCounts++;
-        stringBuilder.append(date).append("\t");
     }
 
     private static int getDayBegins(int year, int month, int date) {
