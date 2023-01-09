@@ -8,12 +8,39 @@ public class StringMain {
 
     public static void main(String[] args) {
 
+
+    }
+
+    private static boolean isPalindrome1(String str) {
+        // using StringBuilder
+        if (str == null)
+            return false;
+        StringBuilder stringBuilder = new StringBuilder(str);
+        return stringBuilder.reverse().toString().equals(str);
+    }
+
+    private static boolean isPalindrome2(String str){
+        if (str == null)
+            return false;
+
+        int length = str.length();
+
+        for (int i = 0; i < length / 2; i++) {
+            if (str.charAt(i) != str.charAt(length - i - 1))
+                return false;
+        }
+        return true;
+    }
+
+
+
+
+    private static void practiceStringToArray() {
         byte[] bytesArray = QUERY.getBytes();
         char[] charsArray = QUERY.toCharArray();
 
         System.out.println(Arrays.toString(bytesArray));
         System.out.println(Arrays.toString(charsArray));
-
     }
 
     private static void convertToString() {
@@ -32,13 +59,13 @@ public class StringMain {
         String id = "kosta";
         String id2 = "KOSTA";
 
-        if (id.equalsIgnoreCase(id2)){
+        if (id.equalsIgnoreCase(id2)) {
             System.out.println("같다");
         }
     }
 
     private static void practiceEndsWtih() {
-        if (QUERY.endsWith("jpg")){
+        if (QUERY.endsWith("jpg")) {
             System.out.println("this is img!");
         }
     }
@@ -48,15 +75,14 @@ public class StringMain {
 
         // 퀴즈 query 에서 board 문자열만 추출해서 출력해보자
 
-        System.out.println(query.substring(14,19));
+        System.out.println(query.substring(14, 19));
 
         String fileName = "kosta.jpg";
         String head = fileName.replace(".jpg", "");
         String head2 = fileName.substring(0, fileName.indexOf("."));
-        String tail = fileName.substring(fileName.indexOf(".")+1);
+        String tail = fileName.substring(fileName.indexOf(".") + 1);
 
         System.out.printf("%s : %s", head2, tail);
-
 
 
     }
