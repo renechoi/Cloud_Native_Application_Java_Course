@@ -17,6 +17,8 @@ public class Main {
         });
         msSql.insertBoard();
 
+        BoardService mongoDb = new BoardService( ()-> System.out.println("구현을 해보자!") );
+
 
     }
 }
