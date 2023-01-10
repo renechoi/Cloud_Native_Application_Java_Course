@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LottoSolution2 {
@@ -29,7 +28,7 @@ public class LottoSolution2 {
                 .limit(6)
                 .filter(v-> !lotto.contains(v))
                 .forEach((v)->lotto.add(v));
-        return new LottoSolution2(lotto);
+        return new LottoSolution2(lotto);  // new ArrayList<>(lottoNumbers);
     }
 
     public void show() {
