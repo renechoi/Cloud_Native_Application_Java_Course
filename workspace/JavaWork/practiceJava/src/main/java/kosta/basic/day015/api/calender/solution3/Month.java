@@ -22,6 +22,10 @@ public class Month {
     }
 
     public static void createMonth(int monthCounts, int monthFirstDay) {
+
+        monthCounts = 31;
+        monthFirstDay = 0;
+
         for (int i = 0; i < month.length; i++) {
             for (int j = 0; j < month[i].length; j++) {
                 month[i][j] = 0;
