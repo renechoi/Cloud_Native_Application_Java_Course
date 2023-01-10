@@ -7,7 +7,7 @@ import java.util.Locale;
 
 public class practiceCalender {
     public static void main(String[] args) {
-
+        getspecificDay();
     }
 
     private static void getspecificDay() {
@@ -15,10 +15,11 @@ public class practiceCalender {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm");
         String calenderString = simpleDateFormat.format(calendar.getTime());
-        System.out.println(calenderString);
+//        System.out.println(calenderString);
 
         // 2023 ~ 2033 새해 요일을 구하자 ?!
         char[] week = {'일', '월', '화', '수', '목', '금', '토'};
+
 
         for (int i = 2023; i <= 2033; i++) {
             calendar.set(i, 0, 1);

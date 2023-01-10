@@ -26,6 +26,8 @@ public class QuizMain {
             }
         }
 
+        Calendar calendar = Calendar.getInstance();  // new
+        System.out.println(calendar.getTimeZone());
 
     }
 }
