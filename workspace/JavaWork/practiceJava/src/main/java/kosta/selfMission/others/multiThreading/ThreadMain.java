@@ -31,6 +31,23 @@ public class ThreadMain {
     public static void main(String[] args) {
 
 
+
+
+
+    }
+
+    private static void setPriority() {
+        // priority is just a request => 반드시 그렇게 되는 것은 아님
+
+        Task1 task1 = new Task1();
+        task1.setPriority(10);   // 1 ~ 5
+        task1.start();
+
+
+        Task2 task2 = new Task2();
+        Thread task2Thread = new Thread(task2);
+        task2Thread.setPriority(1);
+        task2Thread.start();
     }
 
     private static void threadExample() {
