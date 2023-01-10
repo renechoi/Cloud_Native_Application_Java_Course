@@ -19,11 +19,11 @@ public class LottoSolution2 {
 
     public static LottoSolution2 of(LottoNumberGenerator lottoNumberGenerator) {
 //        // struture way
-//        TreeSet<Integer> lottoNumbers = new TreeSet<>();
-//        while (lottoNumbers.size() != 6) {
-//            int numberGenerated = lottoNumberGenerator.generateRandomNumber();
-//            lottoNumbers.add(numberGenerated);
-//        }
+        TreeSet<Integer> lottoNumbers = new TreeSet<>();
+        while (lottoNumbers.size() != 6) {
+            int numberGenerated = lottoNumberGenerator.generateRandomNumber();
+            lottoNumbers.add(numberGenerated);
+        }
         // functional way
         Stream.generate(lottoNumberGenerator::generateRandomNumber)
                 .limit(6)
