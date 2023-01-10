@@ -1,4 +1,4 @@
-package kosta.basic.day015.api.calender;
+package kosta.basic.day015.api.calender.solution2;
 
 import java.util.Calendar;
 import java.util.stream.IntStream;
