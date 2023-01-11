@@ -1,4 +1,4 @@
-package kosta.mission3.lottoWithFactory;
+package kosta.mission3.mission3_02.lottoWithFactory;
 
 public class Main {
     public static void main(String[] args) {

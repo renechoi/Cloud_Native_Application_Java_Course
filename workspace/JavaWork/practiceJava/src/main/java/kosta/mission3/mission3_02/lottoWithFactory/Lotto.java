@@ -1,4 +1,4 @@
-package kosta.mission3.lottoWithFactory;
+package kosta.mission3.mission3_02.lottoWithFactory;
 
 import java.util.Arrays;
 import java.util.List;
