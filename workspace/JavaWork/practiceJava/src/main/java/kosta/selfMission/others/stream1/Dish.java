@@ -32,9 +32,7 @@ public class Dish {
 
     @Override
     public String toString() {
-        return "Dish{" +
-                "name='" + name + '\'' +
-                '}';
+        return String.format("ㅌ%s", name);
     }
 
     public enum Type {MEAT, FISH, OTHER}
