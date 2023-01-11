@@ -19,7 +19,7 @@ public class Main {
         // List -> 입력순서 -> 정렬순서
         // Collections.sort( 리 스 트 )
 
-        // Comparable -> compareTo 로 정렬 기준을 세우기         // 객체에서는 comparable을 구현하여 override
+        // Comparable -> compareTo 로 정렬 기준을 세우기         // 객체에서는 comparable을 구현하여 override => 최초의 정렬 기준을 세워줌
         // Comparator -> compare()                          // comparator를 만들 경우는 comparator를
 
 
