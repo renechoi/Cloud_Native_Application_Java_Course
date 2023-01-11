@@ -59,6 +59,12 @@ public class Management {
         contacts.remove(getContact(nameToBeDeleted));
     }
 
+    public void sort() {
+
+        //TODO : sort ! ... by what ?
+
+    }
+
     private ContactGeneral getContact(String nameFrom) {
         return contacts.stream()
                 .filter(c -> c.getName().equals(nameFrom))

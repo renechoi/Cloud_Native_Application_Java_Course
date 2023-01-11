@@ -37,7 +37,13 @@ enum Command {
             management.delete();
         }
     },
-    EXIT(6) {
+    SORT(6) {
+        @Override
+        public void systemAction(Management management) {
+            management.delete();
+        }
+    },
+    EXIT(Controller.QUIT_COMMAND) {
         @Override
         public void systemAction(Management management) {
         }
@@ -62,7 +68,7 @@ enum Command {
     }
 
     private void validate(int userChoice) {
-        if (userChoice != 1 && userChoice != 2 && userChoice != 3 && userChoice != 4 && userChoice != 5 && userChoice != 6) {
+        if (userChoice != 1 && userChoice != 2 && userChoice != 3 && userChoice != 4 && userChoice != 5 && userChoice != 6 && userChoice != 7) {
             throw new InvalidCommandException(InvalidCommandException.INVALID_COMMAND);
         }
     }

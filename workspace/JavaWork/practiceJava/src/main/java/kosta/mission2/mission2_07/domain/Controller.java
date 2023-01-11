@@ -7,7 +7,7 @@ public class Controller {
     public Controller( ) {
     }
 
-    public static final int QUIT_COMMAND = 6;
+    public static final int QUIT_COMMAND = 7;
 
     public void run() {
         Management management = new Management();
