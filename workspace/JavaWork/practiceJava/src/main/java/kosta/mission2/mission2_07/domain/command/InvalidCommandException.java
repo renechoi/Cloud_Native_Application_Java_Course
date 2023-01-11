@@ -1,4 +1,4 @@
-package kosta.mission2.mission2_07.domain;
+package kosta.mission2.mission2_07.domain.command;
 
 public class InvalidCommandException extends IllegalArgumentException {
 

@@ -1,5 +1,6 @@
 package kosta.mission2.mission2_07.domain;
 
+import kosta.mission2.mission2_07.domain.command.CommandSort;
 import kosta.mission2.mission2_07.domain.contact.ContactGeneral;
 import kosta.mission2.mission2_07.domain.contact.ContactUniversity;
 import kosta.mission2.mission2_07.ui.InputView;
@@ -42,12 +43,12 @@ public class Management {
         }
     }
 
-    public void printInfoByName( ) {
+    public void printInfoByName() {
         String nameRequested = InputView.getName(SEARCH);
         getContact(nameRequested).printContactInfo();
     }
 
-    public void update( ) {
+    public void update() {
         String nameFrom = InputView.getName(UPDATE_FROM);
         String nameTo = InputView.getName(UPDATE_TO);
 
@@ -56,12 +57,28 @@ public class Management {
 
     public void delete() {
         String nameToBeDeleted = InputView.getName(DELETE);
-
         contacts.remove(getContact(nameToBeDeleted));
+    }
+
+    public void handleSortRequest(Management management) {
+        CommandSort command = CommandSort.of(InputView.getSortCommand());
+        command.sortAction(management);
+    }
+
+    public void sortByType() {
+        contacts.sort(Comparator.comparing(ContactGeneral::getType));
     }
 
     public void sortByName() {
         contacts.sort(Comparator.comparing(ContactGeneral::getName));
+    }
+
+    public void sortByNumber() {
+        contacts.sort(Comparator.comparing(ContactGeneral::getNumber));
+    }
+
+    public void sortByDob() {
+        contacts.sort(Comparator.comparing(ContactGeneral::getDob));
     }
 
     private ContactGeneral getContact(String nameFrom) {
@@ -71,3 +88,22 @@ public class Management {
                 .orElseThrow(() -> new InvalidContactException(InvalidContactException.CONTACT_NOT_FOUND));
     }
 }
+
+// Sort Action에 대해 별도의 클래스를 만들어 관리하는 것에 대해 고민해보았다. 결과는... 놉.. ㅠㅠ
+//class SortAction{
+//    private void sortByType(List<ContactGeneral> contacts) {
+//        contacts.sort(Comparator.comparing(ContactGeneral::getType));
+//    }
+//
+//    private void sortByAge(List<ContactGeneral> contacts) {
+//        contacts.sort(Comparator.comparing(ContactGeneral::getName));
+//    }
+//
+//    private void sortByNumber(List<ContactGeneral> contacts) {
+//        contacts.sort(Comparator.comparing(ContactGeneral::getNumber));
+//    }
+//
+//    private void sortByDob(List<ContactGeneral> contacts) {
+//        contacts.sort(Comparator.comparing(ContactGeneral::getDob));
+//    }
+

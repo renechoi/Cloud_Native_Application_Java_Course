@@ -28,8 +28,20 @@ public class ContactGeneral {
         printAction.print();
     }
 
+    public String getType() {
+        return type;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public LocalDate getDob() {
+        return dob;
     }
 
     public void setName(String name) {

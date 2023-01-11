@@ -8,6 +8,7 @@ public class InputView {
 
     private enum ConsoleMessage {
         REQUEST_GENERAL_COMMAND("\n명령을 입력하세요(1.추가 2.전체 조회 3.검색 4.수정 5.삭제 6.정렬 7.종료): "),
+        REQUEST_SORT_COMMAND("\n정렬 기준을 어떻게 할까요?(1.타입 2.이름 3.전화번호 4.생년월일): "),
         REQUEST_NAME("%s 이름을 입력하세요: "),
         REQUEST_NUMBER("전화번호를 입력하세요: "),
         REQUEST_DOB_YEAR("생년월일을 차례로 입력하세요(년): "),
@@ -30,6 +31,11 @@ public class InputView {
 
     public static int getGeneralCommand() {
         System.out.print(ConsoleMessage.REQUEST_GENERAL_COMMAND.message);
+        return validateNumber(scanner.nextLine());
+    }
+
+    public static int getSortCommand() {
+        System.out.print(ConsoleMessage.REQUEST_SORT_COMMAND.message);
         return validateNumber(scanner.nextLine());
     }
 
