@@ -22,8 +22,8 @@ public class DeliveryManager {
     private void confirmOrders() {
         System.out.println("\n주문 내역입니다 ^ㅡㅡㅡㅡ^\n");
         orders.forEach(order -> {
-                    int price = Store.foods.stream()
-                            .filter(v -> v.getName().equals(order.getFoodRequested()))
+                    int price = Store.menu.stream()
+                            .filter(food -> food.getName().equals(order.getFoodRequested()))
                             .findFirst()
                             .get()
                             .getPrice();
@@ -35,7 +35,7 @@ public class DeliveryManager {
 
     private void showReceipt() {
         int total = orders.stream().mapToInt(order -> {
-            return Store.foods.stream()
+            return Store.menu.stream()
                     .filter(food -> food.getName().equals(order.getFoodRequested()))
                     .mapToInt(Food::getPrice)
                     .sum();
