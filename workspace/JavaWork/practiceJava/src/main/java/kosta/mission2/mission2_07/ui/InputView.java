@@ -7,7 +7,7 @@ public class InputView {
     static Scanner scanner = new Scanner(System.in);
 
     private enum ConsoleMessage {
-        REQUEST_GENERAL_COMMAND("\n명령을 입력하세요(1.추가 2.전체 조회 3.검색 4.수정 5.삭제 6.종료): "),
+        REQUEST_GENERAL_COMMAND("\n명령을 입력하세요(1.추가 2.전체 조회 3.검색 4.수정 5.삭제 6.정렬 7.종료): "),
         REQUEST_NAME("%s 이름을 입력하세요: "),
         REQUEST_NUMBER("전화번호를 입력하세요: "),
         REQUEST_DOB_YEAR("생년월일을 차례로 입력하세요(년): "),

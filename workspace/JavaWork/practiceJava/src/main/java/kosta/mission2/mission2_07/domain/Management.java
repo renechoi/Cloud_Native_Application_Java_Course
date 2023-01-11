@@ -6,6 +6,7 @@ import kosta.mission2.mission2_07.ui.InputView;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Management {
@@ -59,10 +60,8 @@ public class Management {
         contacts.remove(getContact(nameToBeDeleted));
     }
 
-    public void sort() {
-
-        //TODO : sort ! ... by what ?
-
+    public void sortByName() {
+        contacts.sort(Comparator.comparing(ContactGeneral::getName));
     }
 
     private ContactGeneral getContact(String nameFrom) {

@@ -1,7 +1,5 @@
 package kosta.mission2.mission2_07.domain;
 
-import kosta.mission2.mission2_07.ui.InputView;
-
 import java.util.Arrays;
 
 enum Command {
@@ -40,7 +38,7 @@ enum Command {
     SORT(6) {
         @Override
         public void systemAction(Management management) {
-            management.delete();
+            management.sortByName();
         }
     },
     EXIT(Controller.QUIT_COMMAND) {
