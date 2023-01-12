@@ -21,9 +21,21 @@ public class CopyExam {
         FileReader fileReader = new FileReader(fileOriginal);
         FileWriter fileWriter = new FileWriter(fileNew);
 
-        char[] textTotal = readFile(fileReader, getTextLength(fileOriginal));
-        writeFile(fileWriter, textTotal);
+        String textTotal = fetchContent(fileReader, getTextLength(fileOriginal));
+        writeContent(fileWriter, textTotal);
         checkResult(fileNew);
+    }
+
+    private static String fetchContent(FileReader fileReader, int textLength) throws IOException {
+        char[] copyBlock = new char[textLength + 2];
+        fileReader.read(copyBlock);
+        fileReader.close();
+        return String.valueOf(copyBlock);
+    }
+
+    private static void writeContent(FileWriter fileWriter, String textTotal) throws IOException {
+        fileWriter.write(textTotal);
+        fileWriter.close();
     }
 
     private static void checkResult(String fileNew) throws IOException {
@@ -32,21 +44,10 @@ public class CopyExam {
         copyChecker.read(resultBlock);
         System.out.printf("이런 텍스트가 카피되었네요! ⇣⇣⇣\n\n");
         System.out.println(resultBlock);
-    }
-
-    private static char[] readFile(FileReader fileReader, int textLength) throws IOException {
-        char[] copyBlock = new char[textLength + 2];
-        fileReader.read(copyBlock);
-        return copyBlock;
-    }
-
-    private static void writeFile(FileWriter fileWriter, char[] textTotal) throws IOException {
-        fileWriter.write(textTotal);
-        fileWriter.close();
+        copyChecker.close();
     }
 
     private static int getTextLength(String fileOriginal) throws IOException {
         return Files.lines(Paths.get(fileOriginal)).mapToInt(String::length).sum();
     }
-
 }
