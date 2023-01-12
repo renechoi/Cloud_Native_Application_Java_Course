@@ -12,8 +12,9 @@ public class CommandReader {
         return command;
     }
 
+    // TODO : 리팩토링 가즈아 !!!!!
     private void validate(int userInput) {
-        if (userInput != 1 && userInput != 2 && userInput != 3 && userInput != 4 && userInput != 5 && userInput != 6 && userInput != 7) {
+        if (userInput != 1 && userInput != 2 && userInput != 3 && userInput != 4 && userInput != 5 && userInput != 6 && userInput != 7 && userInput != 8 && userInput != 9) {
             throw new InvalidCommandException(InvalidCommandException.INVALID_COMMAND);
         }
     }

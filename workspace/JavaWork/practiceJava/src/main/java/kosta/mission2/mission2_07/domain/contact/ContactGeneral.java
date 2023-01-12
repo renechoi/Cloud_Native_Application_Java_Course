@@ -3,10 +3,11 @@ package kosta.mission2.mission2_07.domain.contact;
 import kosta.mission2.mission2_07.ui.printAction.PrintAction;
 import kosta.mission2.mission2_07.ui.printAction.PrintGeneralContact;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class ContactGeneral {
+public class ContactGeneral implements Serializable {
     private String type;
     private String name;
     private String number;
@@ -21,10 +22,10 @@ public class ContactGeneral {
         this.name = name;
         this.number = number;
         this.dob = dob;
-        this.printAction = new PrintGeneralContact(type, name, number, dob);
     }
 
     public void printContactInfo() {
+        this.printAction = new PrintGeneralContact(type, name, number, dob);
         printAction.print();
     }
 

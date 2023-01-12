@@ -7,7 +7,7 @@ public class InputView {
     static Scanner scanner = new Scanner(System.in);
 
     private enum ConsoleMessage {
-        REQUEST_GENERAL_COMMAND("\n명령을 입력하세요(1.추가 2.전체 조회 3.검색 4.수정 5.삭제 6.정렬 7.종료): "),
+        REQUEST_GENERAL_COMMAND("\n명령을 입력하세요(1.추가 2.전체 조회 3.검색 4.수정 5.삭제 6.정렬 7.파일저장 8.파일불러오기 9.종료): "),
         REQUEST_SORT_COMMAND("\n정렬 기준을 어떻게 할까요?(1.타입 2.이름 3.전화번호 4.생년월일): "),
         REQUEST_NAME("%s 이름을 입력하세요: "),
         REQUEST_NUMBER("전화번호를 입력하세요: "),
@@ -44,6 +44,7 @@ public class InputView {
         return scanner.nextLine();
     }
 
+    // TODO : 전화번호 validation 구현 !
     public static String getNumber() {
         System.out.print(ConsoleMessage.REQUEST_NUMBER.message);
         return scanner.nextLine();

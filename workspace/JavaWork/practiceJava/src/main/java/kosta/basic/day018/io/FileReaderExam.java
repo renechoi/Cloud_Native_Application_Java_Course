@@ -32,7 +32,7 @@ public class FileReaderExam {
         if ((char) arr[0] == '\n') {
             System.out.print("<여기 개행문자:\\n>");
         }
-//            System.out.print(arr[0]);
+        System.out.print(arr[0]);
         System.out.print(arr[1]);
         System.out.print(arr[2]);
         System.out.print(arr[3]);

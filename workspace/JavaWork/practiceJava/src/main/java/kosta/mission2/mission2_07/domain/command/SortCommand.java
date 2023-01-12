@@ -1,45 +1,46 @@
 package kosta.mission2.mission2_07.domain.command;
 
 import kosta.mission2.mission2_07.domain.Management;
+import kosta.mission2.mission2_07.domain.Result;
 
 import java.util.Arrays;
 
-public enum CommandSort {
+public enum SortCommand implements Command{
 
     SORT_BY_TYPE(1) {
         @Override
-        public void sortAction(Management management) {
-            management.sortByType();
+        public Result handleCommand(Management management) {
+            return management.sortByType();
         }
     },
     SORT_BY_NAME(2) {
         @Override
-        public void sortAction(Management management) {
-            management.sortByName();
+        public Result handleCommand(Management management) {
+            return management.sortByName();
         }
 
     },
     SORT_BY_NUMBER(3) {
         @Override
-        public void sortAction(Management management) {
-            management.sortByNumber();
+        public Result handleCommand(Management management) {
+            return management.sortByNumber();
         }
     },
     SORT_BY_DOB(4) {
         @Override
-        public void sortAction(Management management) {
-            management.sortByDob();
+        public Result handleCommand(Management management) {
+            return management.sortByDob();
         }
     };
 
     private final int command;
 
-    CommandSort(int userChoice) {
+    SortCommand(int userChoice) {
         validate(userChoice);
         this.command = userChoice;
     }
 
-    public static CommandSort of(int userChoice) {
+    public static SortCommand of(int userChoice) {
         return Arrays.stream(values())
                 .filter(v -> v.command == userChoice)
                 .findFirst()
@@ -52,5 +53,5 @@ public enum CommandSort {
         }
     }
 
-    public abstract void sortAction(Management management);
+    public abstract Result handleCommand(Management management);
 }
