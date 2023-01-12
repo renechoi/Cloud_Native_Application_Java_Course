@@ -25,7 +25,7 @@ public class Management implements Serializable {
         try {
             String type = InputView.getType();
             String name = InputView.getName(ADDITION);
-            String number = InputView.getNumber();
+            String number = InputView.getPhoneNumber();
             LocalDate localDate = LocalDate.of(InputView.getDobYear(), InputView.getDobMonth(), InputView.getDobDate());
             switch (type) {
                 case "일반" -> contacts.add(new ContactGeneral(type, name, number, localDate));
@@ -115,7 +115,7 @@ public class Management implements Serializable {
 
     public Result sortByNumber() {
         try {
-            contacts.sort(Comparator.comparing(ContactGeneral::getNumber));
+            contacts.sort(Comparator.comparing(ContactGeneral::getPhoneNumber));
         } catch (RuntimeException e) {
             throw new NotSupportOperationException(NotSupportOperationException.SORT_NOT_SUPPORT_OPERATION_EXCEPTION);
         }

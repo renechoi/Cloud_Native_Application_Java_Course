@@ -5,27 +5,26 @@ import kosta.mission2.mission2_07.ui.printAction.PrintGeneralContact;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class ContactGeneral implements Serializable {
     private String type;
     private String name;
-    private String number;
+    private String phoneNumber;
     private LocalDate dob;
     PrintAction printAction;
 
     ContactGeneral() {
     }
 
-    public ContactGeneral(String type, String name, String number, LocalDate dob) {
+    public ContactGeneral(String type, String name, String phoneNumber, LocalDate dob) {
         this.type = type;
         this.name = name;
-        this.number = number;
+        this.phoneNumber = phoneNumber;
         this.dob = dob;
     }
 
     public void printContactInfo() {
-        this.printAction = new PrintGeneralContact(type, name, number, dob);
+        this.printAction = new PrintGeneralContact(type, name, phoneNumber, dob);
         printAction.print();
     }
 
@@ -37,8 +36,8 @@ public class ContactGeneral implements Serializable {
         return name;
     }
 
-    public String getNumber() {
-        return number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public LocalDate getDob() {

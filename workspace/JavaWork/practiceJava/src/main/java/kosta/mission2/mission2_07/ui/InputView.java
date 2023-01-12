@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class InputView {
 
+    public static final String PHONE_NUMBER_REGEX = "(01[\\d])-([\\d]{3,4})-([\\d]{4})";
     static Scanner scanner = new Scanner(System.in);
 
     private enum ConsoleMessage {
         REQUEST_GENERAL_COMMAND("\n명령을 입력하세요(1.추가 2.전체 조회 3.검색 4.수정 5.삭제 6.정렬 7.파일저장 8.파일불러오기 9.종료): "),
         REQUEST_SORT_COMMAND("\n정렬 기준을 어떻게 할까요?(1.타입 2.이름 3.전화번호 4.생년월일): "),
         REQUEST_NAME("%s 이름을 입력하세요: "),
-        REQUEST_NUMBER("전화번호를 입력하세요: "),
+        REQUEST_NUMBER("전화번호를 입력하세요(010-XXXX-XXXX): "),
         REQUEST_DOB_YEAR("생년월일을 차례로 입력하세요(년): "),
         REQUEST_DOB_MONTH("생년월일을 차례로 입력하세요(월): "),
         REQUEST_DOB_DATE("생년월일을 차례로 입력하세요(일): "),
@@ -44,10 +45,9 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    // TODO : 전화번호 validation 구현 !
-    public static String getNumber() {
+    public static String getPhoneNumber() {
         System.out.print(ConsoleMessage.REQUEST_NUMBER.message);
-        return scanner.nextLine();
+        return validatePhoneNumber(scanner.nextLine());
     }
 
     public static int getDobYear() {
@@ -88,4 +88,10 @@ public class InputView {
         }
     }
 
+    public static String validatePhoneNumber(String phoneNumber){
+        if (phoneNumber.matches(PHONE_NUMBER_REGEX)){
+            return phoneNumber;
+        }
+        throw new InvalidNumberInputException(InvalidNumberInputException.INVALID_PHONE_NUMBER_EXCEPTION);
+    }
 }
