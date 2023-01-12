@@ -1,6 +1,6 @@
 package kosta.mission2.mission2_07.domain.command;
 
-import kosta.mission2.mission2_07.domain.Management;
+import kosta.mission2.mission2_07.domain.manager.Manager;
 import kosta.mission2.mission2_07.domain.Result;
 
 import java.util.Arrays;
@@ -9,27 +9,27 @@ public enum SortCommand implements Command{
 
     SORT_BY_TYPE(1) {
         @Override
-        public Result handleCommand(Management management) {
-            return management.sortByType();
+        public Result handleCommand(Manager manager) {
+            return manager.sortByType();
         }
     },
     SORT_BY_NAME(2) {
         @Override
-        public Result handleCommand(Management management) {
-            return management.sortByName();
+        public Result handleCommand(Manager manager) {
+            return manager.sortByName();
         }
 
     },
     SORT_BY_NUMBER(3) {
         @Override
-        public Result handleCommand(Management management) {
-            return management.sortByNumber();
+        public Result handleCommand(Manager manager) {
+            return manager.sortByNumber();
         }
     },
     SORT_BY_DOB(4) {
         @Override
-        public Result handleCommand(Management management) {
-            return management.sortByDob();
+        public Result handleCommand(Manager manager) {
+            return manager.sortByDob();
         }
     };
 
@@ -53,5 +53,5 @@ public enum SortCommand implements Command{
         }
     }
 
-    public abstract Result handleCommand(Management management);
+    public abstract Result handleCommand(Manager manager);
 }

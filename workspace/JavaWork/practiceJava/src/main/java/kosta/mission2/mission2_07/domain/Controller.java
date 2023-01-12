@@ -2,6 +2,7 @@ package kosta.mission2.mission2_07.domain;
 
 import kosta.mission2.mission2_07.domain.command.Command;
 import kosta.mission2.mission2_07.domain.command.CommandReader;
+import kosta.mission2.mission2_07.domain.manager.Manager;
 import kosta.mission2.mission2_07.ui.InputView;
 
 public class Controller {
@@ -12,12 +13,12 @@ public class Controller {
     public static final int QUIT_COMMAND = 9;
 
     public void run() {
-        Management management = new Management();
+        Manager manager = new Manager();
         CommandReader commandReader = new CommandReader();
-        processCRUD(management, commandReader);
+        processCRUD(manager, commandReader);
     }
 
-    private void processCRUD(Management management, CommandReader commandReader) {
+    private void processCRUD(Manager manager, CommandReader commandReader) {
 
         /*
          * 반복 작동 구현을 위해 do-while 구문이 아닌 재귀적 호출을 사용하였다.
@@ -28,14 +29,14 @@ public class Controller {
          */
         try {
             Command command = commandReader.parseCommand(InputView.getGeneralCommand());
-            Result result = command.handleCommand(management);
+            Result result = command.handleCommand(manager);
 
             if (!result.isQuit()) {
-                processCRUD(management, commandReader);
+                processCRUD(manager, commandReader);
             }
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
-            processCRUD(management, commandReader);
+            processCRUD(manager, commandReader);
         }
     }
 }

@@ -1,4 +1,4 @@
-package kosta.mission2.mission2_07.domain;
+package kosta.mission2.mission2_07.domain.manager;
 
 public class NotSupportOperationException extends RuntimeException {
     public static final String CRUD_NOT_SUPPORT_OPERATION_EXCEPTION = "작업 수행 오류가 발생했습니다!";

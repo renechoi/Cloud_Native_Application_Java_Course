@@ -1,5 +1,6 @@
-package kosta.mission2.mission2_07.domain;
+package kosta.mission2.mission2_07.domain.manager;
 
+import kosta.mission2.mission2_07.domain.Result;
 import kosta.mission2.mission2_07.domain.command.SortCommand;
 import kosta.mission2.mission2_07.domain.contact.ContactGeneral;
 import kosta.mission2.mission2_07.domain.contact.ContactUniversity;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Management implements Serializable {
+public class Manager implements Serializable {
 
     public static final String ADDITION = "추가할";
     public static final String SEARCH = "검색할";
@@ -83,10 +84,10 @@ public class Management implements Serializable {
         return new Result(true, false);
     }
 
-    public Result handleSortRequest(Management management) {
+    public Result handleSortRequest(Manager manager) {
         try {
             SortCommand command = SortCommand.of(InputView.getSortCommand());
-            command.handleCommand(management);
+            command.handleCommand(manager);
         } catch (RuntimeException e) {
             throw new NotSupportOperationException(NotSupportOperationException.CRUD_NOT_SUPPORT_OPERATION_EXCEPTION);
         }
