@@ -142,7 +142,8 @@ public class Manager implements Serializable {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("contactInfoVer1.btc"));
             objectOutputStream.writeObject(contacts);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage());                     // 즉각 출력
+            OutputView.printExceptionMessage(e.getMessage());       // static ui 로직을 통한 출력
             throw new NotSupportOperationException(NotSupportOperationException.FILE_SAVING_IO_EXCEPTION);
         }
         return new Result(true, false);

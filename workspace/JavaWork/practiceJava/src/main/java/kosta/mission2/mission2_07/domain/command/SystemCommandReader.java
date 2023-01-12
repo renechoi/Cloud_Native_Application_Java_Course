@@ -2,6 +2,7 @@ package kosta.mission2.mission2_07.domain.command;
 
 import java.util.Arrays;
 
+// TODO : Reader 중복 해결하는 방법을 고민해보자!
 public class SystemCommandReader {
     private Command command;
 
