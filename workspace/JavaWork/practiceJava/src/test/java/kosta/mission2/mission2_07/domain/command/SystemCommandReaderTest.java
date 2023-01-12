@@ -5,12 +5,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class CommandReaderTest {
+class SystemCommandReaderTest {
 
     @ParameterizedTest
     @ValueSource(ints = {0, 10})
     void verify_Command_Is_Assigned_Number_Allowed_Only(int number) {
-        CommandReader commandReader = new CommandReader();
-        assertThrows(InvalidCommandException.class, () -> commandReader.parseCommand(number));
+        SystemCommandReader systemCommandReader = new SystemCommandReader();
+        assertThrows(InvalidCommandException.class, () -> systemCommandReader.parseCommand(number));
     }
 }

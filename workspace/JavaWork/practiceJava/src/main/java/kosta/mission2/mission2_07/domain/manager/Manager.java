@@ -1,7 +1,10 @@
 package kosta.mission2.mission2_07.domain.manager;
 
 import kosta.mission2.mission2_07.domain.Result;
+import kosta.mission2.mission2_07.domain.command.Command;
 import kosta.mission2.mission2_07.domain.command.SortCommand;
+import kosta.mission2.mission2_07.domain.command.SortCommandReader;
+import kosta.mission2.mission2_07.domain.command.SystemCommandReader;
 import kosta.mission2.mission2_07.domain.contact.ContactGeneral;
 import kosta.mission2.mission2_07.domain.contact.ContactUniversity;
 import kosta.mission2.mission2_07.ui.InputView;
@@ -86,7 +89,8 @@ public class Manager implements Serializable {
 
     public Result handleSortRequest(Manager manager) {
         try {
-            SortCommand command = SortCommand.of(InputView.getSortCommand());
+            SortCommandReader sortCommandReader = new SortCommandReader();
+            Command command = sortCommandReader.parseCommand(InputView.getSortCommand());
             command.handleCommand(manager);
         } catch (RuntimeException e) {
             throw new NotSupportOperationException(NotSupportOperationException.CRUD_NOT_SUPPORT_OPERATION_EXCEPTION);
@@ -131,7 +135,6 @@ public class Manager implements Serializable {
         }
         return new Result(true, false);
     }
-
 
     public Result saveFile() {
         try {

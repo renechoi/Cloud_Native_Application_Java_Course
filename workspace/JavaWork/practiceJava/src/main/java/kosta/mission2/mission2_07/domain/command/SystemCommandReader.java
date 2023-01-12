@@ -2,10 +2,10 @@ package kosta.mission2.mission2_07.domain.command;
 
 import java.util.Arrays;
 
-public class CommandReader {
+public class SystemCommandReader {
     private Command command;
 
-    public CommandReader() {
+    public SystemCommandReader() {
     }
 
     public Command parseCommand(int userInput){

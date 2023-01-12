@@ -36,21 +36,18 @@ public enum SortCommand implements Command{
     private final int command;
 
     SortCommand(int userChoice) {
-        validate(userChoice);
         this.command = userChoice;
     }
 
     public static SortCommand of(int userChoice) {
         return Arrays.stream(values())
-                .filter(v -> v.command == userChoice)
+                .filter(sortCommands -> sortCommands.command == userChoice)
                 .findFirst()
                 .orElseThrow(() -> new InvalidCommandException(InvalidCommandException.INVALID_COMMAND));
     }
 
-    private void validate(int userChoice) {
-        if (userChoice != 1 && userChoice != 2 && userChoice != 3 && userChoice != 4 ) {
-            throw new InvalidCommandException(InvalidCommandException.INVALID_COMMAND);
-        }
+    public int getCommand() {
+        return command;
     }
 
     public abstract Result handleCommand(Manager manager);

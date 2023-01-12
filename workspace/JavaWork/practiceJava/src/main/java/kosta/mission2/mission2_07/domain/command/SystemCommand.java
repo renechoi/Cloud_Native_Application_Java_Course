@@ -71,7 +71,7 @@ public enum SystemCommand implements Command {
 
     public static SystemCommand of(int userChoice) {
         return Arrays.stream(values())
-                .filter(v -> v.command == userChoice)
+                .filter(systemCommands -> systemCommands.command == userChoice)
                 .findFirst()
                 .orElseThrow(() -> new InvalidCommandException(InvalidCommandException.INVALID_COMMAND));
     }

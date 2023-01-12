@@ -18,11 +18,11 @@ public class Main {
         // 5. 수정
         // 6. 삭제
 
-        try{
-        Controller controller = new Controller();
-        controller.run();
+        try {
+            Controller controller = new Controller();
+            controller.run();
 
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             System.out.println("예기치 못한 오류 발생!");
         }
     }
