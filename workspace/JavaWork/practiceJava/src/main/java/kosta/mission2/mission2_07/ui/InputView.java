@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputView {
 
-    public static final String PHONE_NUMBER_REGEX = "(01[\\d])-([\\d]{3,4})-([\\d]{4})";
+    public static final String PHONE_NUMBER_REGEX = "(01\\d)-(\\d{3,4})-(\\d{4})";
     static Scanner scanner = new Scanner(System.in);
 
     private enum ConsoleMessage {
