@@ -1,4 +1,4 @@
-package kosta.mission2.mission2_07.ui.printAction;
+package kosta.mission2.mission2_07.ui.outputView.printAction;
 
 import java.io.Serializable;
 

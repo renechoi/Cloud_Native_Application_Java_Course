@@ -2,12 +2,11 @@ package kosta.mission2.mission2_07.domain.manager;
 
 import kosta.mission2.mission2_07.domain.Result;
 import kosta.mission2.mission2_07.domain.command.Command;
-import kosta.mission2.mission2_07.domain.command.SortCommand;
 import kosta.mission2.mission2_07.domain.command.SortCommandReader;
-import kosta.mission2.mission2_07.domain.command.SystemCommandReader;
 import kosta.mission2.mission2_07.domain.contact.ContactGeneral;
 import kosta.mission2.mission2_07.domain.contact.ContactUniversity;
-import kosta.mission2.mission2_07.ui.InputView;
+import kosta.mission2.mission2_07.ui.inputView.InputView;
+import kosta.mission2.mission2_07.ui.outputView.OutputView;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -22,18 +21,20 @@ public class Manager implements Serializable {
     public static final String UPDATE_FROM = "수정할";
     public static final String UPDATE_TO = "수정후";
     public static final String DELETE = "삭제할";
+    public static final String TYPE_GENERAL = "일반";
+    public static final String TYPE_UNIVERSITY = "동창";
 
     List<ContactGeneral> contacts = new ArrayList<>();
 
     public Result addInfo() {
         try {
-            String type = InputView.getType();
-            String name = InputView.getName(ADDITION);
-            String number = InputView.getPhoneNumber();
-            LocalDate localDate = LocalDate.of(InputView.getDobYear(), InputView.getDobMonth(), InputView.getDobDate());
-            switch (type) {
-                case "일반" -> contacts.add(new ContactGeneral(type, name, number, localDate));
-                case "동창" -> contacts.add(new ContactUniversity(type, name, number, localDate));
+            String typeRequested = InputView.getType();
+            String nameRequested = InputView.getName(ADDITION);
+            String numberRequested = InputView.getPhoneNumber();
+            LocalDate localDateRequested = LocalDate.of(InputView.getDobYear(), InputView.getDobMonth(), InputView.getDobDate());
+            switch (typeRequested) {
+                case TYPE_GENERAL -> contacts.add(new ContactGeneral(typeRequested, nameRequested, numberRequested, localDateRequested));
+                case TYPE_UNIVERSITY -> contacts.add(new ContactUniversity(typeRequested, nameRequested, numberRequested, localDateRequested));
             }
         } catch (RuntimeException e) {
             throw new NotSupportOperationException(NotSupportOperationException.CRUD_NOT_SUPPORT_OPERATION_EXCEPTION);
@@ -44,7 +45,7 @@ public class Manager implements Serializable {
     public Result printInfoAll() {
         try {
             if (contacts.isEmpty()) {
-                System.out.println("contacts is empty!");
+                OutputView.printContactEmptyMessage();
                 return new Result(true, false);
             }
             for (ContactGeneral contact : contacts) {
@@ -158,7 +159,7 @@ public class Manager implements Serializable {
     }
 
     public Result quit() {
-        System.out.println("quit!");
+        OutputView.printQuitCommandConfirmMessage();
         return new Result(false, true);
     }
 
@@ -169,4 +170,3 @@ public class Manager implements Serializable {
                 .orElseThrow(() -> new InvalidContactException(InvalidContactException.CONTACT_NOT_FOUND));
     }
 }
-

@@ -3,7 +3,7 @@ package kosta.mission2.mission2_07.domain;
 import kosta.mission2.mission2_07.domain.command.Command;
 import kosta.mission2.mission2_07.domain.command.SystemCommandReader;
 import kosta.mission2.mission2_07.domain.manager.Manager;
-import kosta.mission2.mission2_07.ui.InputView;
+import kosta.mission2.mission2_07.ui.inputView.InputView;
 
 public class Controller {
 

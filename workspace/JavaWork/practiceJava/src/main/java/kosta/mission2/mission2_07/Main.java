@@ -1,6 +1,7 @@
 package kosta.mission2.mission2_07;
 
 import kosta.mission2.mission2_07.domain.Controller;
+import kosta.mission2.mission2_07.ui.outputView.OutputView;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,7 +24,7 @@ public class Main {
             controller.run();
 
         } catch (RuntimeException e) {
-            System.out.println("예기치 못한 오류 발생!");
+            OutputView.printRunTimeExceptionMessage();
         }
     }
 }

@@ -1,4 +1,4 @@
-package kosta.mission2.mission2_07.ui.printAction;
+package kosta.mission2.mission2_07.ui.outputView.printAction;
 
 public class PrintJobContact implements PrintAction{
     @Override

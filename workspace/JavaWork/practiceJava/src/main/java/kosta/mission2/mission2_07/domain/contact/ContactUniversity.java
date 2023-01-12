@@ -1,8 +1,7 @@
 package kosta.mission2.mission2_07.domain.contact;
 
-import kosta.mission2.mission2_07.ui.InputView;
-import kosta.mission2.mission2_07.ui.printAction.PrintGeneralContact;
-import kosta.mission2.mission2_07.ui.printAction.PrintUniversityContact;
+import kosta.mission2.mission2_07.ui.inputView.InputView;
+import kosta.mission2.mission2_07.ui.outputView.printAction.PrintUniversityContact;
 
 import java.time.LocalDate;
 
