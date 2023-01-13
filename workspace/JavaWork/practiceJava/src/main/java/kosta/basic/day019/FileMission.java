@@ -29,14 +29,13 @@ public class FileMission {
         List<String> allImageFoldersNames = getImageFoldersNames(allFilePaths);
         List<String> allImageFoldersPaths = getImageFoldersPaths(allFilePaths);
         List<String> allImagePathsAbovePaths = getImageFoldersAboveFolder(allFilePaths);
-
-        copyImageFolder(allImageFoldersNames, allImagePathsAbovePaths);
-
-        String copySourcePath = getCopySourcePath(allImageFoldersPaths);
-        String copyTargetPath = allImagePathsAbovePaths.get(0)+"/img_2";
-        String copyTargetName = getCopySourceName(allImageFoldersPaths);
-
-        copyImageFile(new File(copySourcePath), new File(copyTargetPath,copyTargetName));
+//        copyImageFolder(allImageFoldersNames, allImagePathsAbovePaths);
+//
+//        String copySourcePath = getCopySourcePath(allImageFoldersPaths);
+//        String copyTargetPath = allImagePathsAbovePaths.get(0)+"/img_2";
+//        String copyTargetName = getCopySourceName(allImageFoldersPaths);
+//
+//        copyImageFile(new File(copySourcePath), new File(copyTargetPath,copyTargetName));
     }
 
     private static String getCopySourcePath(List<String> allImageFoldersPaths) {
