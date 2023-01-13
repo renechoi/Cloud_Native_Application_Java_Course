@@ -79,4 +79,6 @@ public enum SystemCommand implements Command {
     public int getCommand() {
         return command;
     }
+
+    public abstract Result handleCommand(Manager manager);
 }
