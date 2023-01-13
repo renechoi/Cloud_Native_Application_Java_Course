@@ -1,4 +1,4 @@
-package kosta.basic.day019.problem3;
+package kosta.basic.day019.fileIO.problem3;
 
 import java.io.*;
 
