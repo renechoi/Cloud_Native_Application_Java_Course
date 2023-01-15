@@ -33,3 +33,9 @@
 ## 💻 출력 예시
 
 ![img](baseball_console_output_example.png)
+
+
+
+## 💻 UML DIAGRAM
+
+![img](baseball_UML.png)
