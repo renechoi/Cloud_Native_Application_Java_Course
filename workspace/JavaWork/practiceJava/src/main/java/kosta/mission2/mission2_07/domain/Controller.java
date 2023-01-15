@@ -1,24 +1,27 @@
 package kosta.mission2.mission2_07.domain;
 
 import kosta.mission2.mission2_07.domain.command.Command;
+import kosta.mission2.mission2_07.domain.command.CommandReader;
 import kosta.mission2.mission2_07.domain.command.SystemCommandReader;
 import kosta.mission2.mission2_07.domain.manager.Manager;
 import kosta.mission2.mission2_07.ui.inputView.InputView;
 
 public class Controller {
+    public static final int QUIT_COMMAND = 9;
 
     public Controller() {
     }
 
-    public static final int QUIT_COMMAND = 9;
-
     public void run() {
         Manager manager = new Manager();
-        SystemCommandReader systemCommandReader = new SystemCommandReader();
+        CommandReader systemCommandReader = new SystemCommandReader();
+        // Todo : 결과값을 받고 결과값에 sortCommand 여부를 포함해서 받아서
+        // 그값에 따라 system을 소환할지 sort를 소환할지를 결정하는 것은 ?
+
         processCRUD(manager, systemCommandReader);
     }
 
-    private void processCRUD(Manager manager, SystemCommandReader systemCommandReader) {
+    private void processCRUD(Manager manager, CommandReader systemCommandReader) {
 
         /*
          * 반복 작동 구현을 위해 do-while 구문이 아닌 재귀적 호출을 사용하였다.
@@ -39,4 +42,8 @@ public class Controller {
             processCRUD(manager, systemCommandReader);
         }
     }
+
+    private void 어떤커맨드리더를쓸건지(){
+    }
+
 }
