@@ -7,10 +7,11 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class TCPServer7 {
+public class TCPServer7Original {
 
 
     public static void main(String[] args) {
@@ -35,16 +36,14 @@ public class TCPServer7 {
             InputStream inputStream = socket.getInputStream();
             while (true) {
                 byte[] buffer = new byte[128];
-
                 int readByteCount = inputStream.read(buffer);
-                String addMessage = "!!!";
-                buffer = addValue(buffer, readByteCount, addMessage);
+                System.out.println(Arrays.toString(buffer));
 
                 if (readByteCount < 0) {
                     System.out.println("[서버] 클라이언트로 부터 연결끊김");
                     break;
                 }
-                String dataReceived = new String(buffer, 0, readByteCount + addMessage.length(), "UTF-8");
+                String dataReceived = new String(buffer, 0, readByteCount, "UTF-8");
                 System.out.println("[서버] 데이터 수신 : " + dataReceived);
 
                 if (dataReceived.equalsIgnoreCase("exit")) {
@@ -52,6 +51,9 @@ public class TCPServer7 {
                     break;
                 }
 
+                String addMessage = "!!!";
+                dataReceived += addMessage;
+                System.out.println(Arrays.toString(dataReceived.getBytes("UTF-8")));
                 outputStream.write(dataReceived.getBytes("UTF-8"));
 
             }
@@ -73,8 +75,8 @@ public class TCPServer7 {
         }
     }
 
-    private static byte[] addValue(byte[] buffer, int readByteCount, String value) throws IOException {
-        if (value.isEmpty() || value.isBlank()) {
+    private static byte[] addValue(byte[] buffer,  int readByteCount, String value) throws IOException {
+        if (value.isEmpty() || value.isBlank()){
             return buffer;
         }
         List<Integer> temporalList = new ArrayList<>();
@@ -83,11 +85,11 @@ public class TCPServer7 {
                 .forEach(i -> {
                     Runnable addFunction = i < readByteCount ?
                             () -> temporalList.add((int) buffer[i]) :
-                            () -> temporalList.add((int) value.getBytes()[i - readByteCount]);
+                            () -> temporalList.add((int) value.getBytes()[i-readByteCount]);
                     addFunction.run();
                 });
 
-        byte[] newBuffer = new byte[temporalList.size() + 1];
+        byte[] newBuffer = new byte[temporalList.size()+1];
         IntStream.range(0, temporalList.size()).forEach(i -> newBuffer[i] = temporalList.get(i).byteValue());
         newBuffer[temporalList.size()] = 10;
         return newBuffer;
