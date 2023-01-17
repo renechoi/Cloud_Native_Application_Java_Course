@@ -1,0 +1,131 @@
+-- select * from employees e;
+
+-- select employee_id "empNo", first_name "E-name", salary "연 봉" from employees;
+
+
+-- select first_name, last_name from employees;
+
+-- select first_name || last_name from employees;
+
+
+-- select concat (Concat(first_name, ' '), last_name) from employees;
+
+-- select concat (concat(first_name, 'hire date is '), hire_date) from employees;
+
+select concat(concat(e.first_name, '-'), e.last_name) "성명",
+       e.salary                                       "급여",
+       e.salary * 12                                  "연봉"
+from employees e;
+
+
+select first_name
+from employees
+where department_id = 10;
+
+
+select e.first_name,
+       e.salary,
+       e.salary * 2
+from employees e
+where e.salary >= 15000;
+
+
+select e.salary * 12
+from employees e
+where e.first_name = 'Lex';
+
+
+select *
+from employee
+
+select first_name, salary
+from employees
+order by 1;
+
+select *
+from Employees e
+order by e.department_id asc, e.salary desc;
+
+
+select * || ' ' || e.last_name,
+        e. salary,
+        e. phone_number,
+        e.hire_date
+from employees e
+order by e.hiredate asc;
+
+
+
+select *
+from Employee e
+order by job_id desc, e.salary desc;
+
+
+
+
+
+-----
+
+select *
+from EMPLOYEES e
+
+select FIRST_NAME, HIRE_DATE TRUNC(MONTHS_BETWEEN(sysdate, HIRE_DATE))
+from EMPLOYEES
+where DEPARTMENT_ID = 110;
+
+
+select FIRST_NAME, to_char(SALARY * 12, '$999,999.99') "SAL"
+from EMPLOYEES
+where DEPARTMENT_ID = 110;
+
+
+select COMMISSION_PCT, nvl(COMMISSION_PCT, 0)
+from EMPLOYEES;
+
+select COMMISSION_PCT, nvl2(COMMISSION_PCT, 100, 0)
+from EMPLOYEES;
+
+
+
+select FIRST_NAME,
+       SALARY,
+       nvl(COMMISSION_PCT, 0)
+from EMPLOYEES
+where SALARY <= 14000 and SALARY>=10000
+order by COMMISSION_PCT desc;
+
+
+
+
+SELECT e.FIRST_NAME , e.SALARY , TO_CHAR( e.HIRE_DATE,'YYYY-MM' ) , e.DEPARTMENT_ID
+FROM EMPLOYEES e
+WHERE e.DEPARTMENT_ID IN (10, 90 , 100);
+
+
+
+select FIRST_NAME
+from EMPLOYEES e
+where upper(e.FIRST_NAME) like '%S%';
+
+
+
+select d.DEPARTMENT_NAME
+from DEPARTMENTS d
+order by length (DEPARTMENT_NAME) desc;
+
+
+-- 문제 9
+
+select *
+from COUNTRIES c
+order by c.COUNTRY_NAME;
+
+
+-- 문제 10
+
+select FIRST_NAME,
+       SALARY,
+       replace(PHONE_NUMBER, '.', '-') "PHONE",
+       HIRE_DATE
+from EMPLOYEES
+where HIRE_DATE <= '2003/12/31';
