@@ -32,6 +32,8 @@ public class Manager implements Serializable {
             String nameRequested = InputView.getName(ADDITION);
             String numberRequested = InputView.getPhoneNumber();
             LocalDate localDateRequested = LocalDate.of(InputView.getDobYear(), InputView.getDobMonth(), InputView.getDobDate());
+
+            // TODO : 얘는 변하는 개념 ! -> 클래스를 분리할 필요가 있다 ?
             switch (typeRequested) {
                 case TYPE_GENERAL -> contacts.add(new ContactGeneral(typeRequested, nameRequested, numberRequested, localDateRequested));
                 case TYPE_UNIVERSITY -> contacts.add(new ContactUniversity(typeRequested, nameRequested, numberRequested, localDateRequested));
@@ -48,9 +50,7 @@ public class Manager implements Serializable {
                 OutputView.printContactEmptyMessage();
                 return new Result(true, false);
             }
-            for (ContactGeneral contact : contacts) {
-                contact.printContactInfo();
-            }
+            contacts.forEach(ContactGeneral::printContactInfo);
         } catch (RuntimeException e) {
             throw new NotSupportOperationException(NotSupportOperationException.CRUD_NOT_SUPPORT_OPERATION_EXCEPTION);
         }
@@ -100,6 +100,7 @@ public class Manager implements Serializable {
     }
 
     // TODO : sort 작업만 별도로 수행하는 (내부) 클래스 구현 고려 !
+    // 변하는 것 -> 클래스 분리 & 변하는 개념을 캡슐화 ! 그런데 얘가 변하는 가 ?!
     public Result sortByType() {
         try {
             contacts.sort(Comparator.comparing(ContactGeneral::getType));
@@ -142,7 +143,6 @@ public class Manager implements Serializable {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("contactInfoVer1.btc"));
             objectOutputStream.writeObject(contacts);
         } catch (IOException e) {
-            System.out.println(e.getMessage());                     // 즉각 출력
             OutputView.printExceptionMessage(e.getMessage());       // static ui 로직을 통한 출력
             throw new NotSupportOperationException(NotSupportOperationException.FILE_SAVING_IO_EXCEPTION);
         }
