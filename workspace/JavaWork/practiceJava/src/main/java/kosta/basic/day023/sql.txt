@@ -1,0 +1,44 @@
+-- 2. 평균 급여가 가장 높은 부서는 ?
+
+SELECT AVG(SALARY) avg_salary
+FROM EMPLOYEES employees
+GROUP BY DEPARTMENT_ID
+
+SELECT MAX(AVG(SALARY)) max_avg_salary
+FROM EMPLOYEES employees
+GROUP BY DEPARTMENT_ID
+
+
+SELECT d.DEPARTMENT_NAME
+FROM DEPARTMENTS d,
+     (SELECT DEPARTMENT_ID
+      FROM EMPLOYEES
+      GROUP BY DEPARTMENT_ID
+      HAVING AVG(EMPLOYEES.salary) = (SELECT MAX(AVG(employees.SALARY)) max_avg_salary
+                                      FROM EMPLOYEES employees
+                                      GROUP BY DEPARTMENT_ID)) get_department_id
+WHERE get_department_id.DEPARTMENT_ID = d.DEPARTMENT_ID
+
+
+-- 평균 급여가 가장 높은 지역(대륙)은 ?
+SELECT REGION_NAME , avg_salary
+FROM (SELECT ROWNUM rn, regions_main.REGION_NAME, avg_salary
+      FROM REGIONS regions_main,
+           (SELECT AVG(SALARY) avg_salary, regions.REGION_ID
+            FROM EMPLOYEES employees,
+                 DEPARTMENTS departmenrts,
+                 Locations locations,
+                 Countries countries,
+                 REGIONS regions
+            WHERE employees.DEPARTMENT_ID = departmenrts.DEPARTMENT_ID
+              AND departmenrts.LOCATION_ID = locations.LOCATION_ID
+              AND locations.COUNTRY_ID = countries.COUNTRY_ID
+              AND countries.REGION_ID = regions.REGION_ID
+            GROUP BY regions.REGION_ID
+            ORDER BY 1 DESC) sub
+      WHERE sub.REGION_ID = regions_main.REGION_ID)
+WHERE rn = 1;
+
+
+
+

@@ -1,0 +1,147 @@
+CREATE TABLE book
+(
+    book_id  number(5),
+    title    varchar2(50),
+    author   varchar2(10),
+    pub_date date
+)
+
+SELECT *
+FROM book;
+
+CREATE TABLE author
+(
+    author_id   number(10),
+    author_name varchar2(100) NOT NULL,
+    author_desc varchar2(500),
+    PRIMARY KEY (author_id)
+);
+
+SELECT *
+FROM author;
+
+DROP TABLE book;
+
+CREATE TABLE book
+(
+    book_id   number(10),
+    title     varchar2(100) NOT NULL,
+    pubs      varchar2(100),
+    pub_date  date,
+    author_id number(10),
+    PRIMARY KEY (book_id),
+    CONSTRAINT constraint_book_fk FOREIGN KEY (author_id)
+        REFERENCES author (author_id)
+);
+
+INSERT INTO author
+VALUES (1, '박경리', '토지 작가')
+
+
+INSERT INTO author (author_id, author_name)
+VALUES (2, '이문열');
+
+SELECT *
+FROM author;
+
+UPDATE author
+SET author_name = '기안84',
+    author_desc = '웹툰작가'
+WHERE author_id = 1;
+
+UPDATE author
+SET author_name = '강풀',
+    author_desc = '인기작가';
+
+DELETE
+FROM author
+WHERE author_id = 3
+
+DELETE
+FROM author;
+
+CREATE SEQUENCE author_sequence_by_id
+    INCREMENT BY 1
+    START WITH 1;
+
+DROP SEQUENCE author_sequence_by_id;
+
+
+CREATE SEQUENCE book_sequence_by_id
+    INCREMENT BY 1
+    START WITH 1;
+
+
+
+INSERT INTO author
+VALUES (author_sequence_by_id.nextval, '이문열', '경북 영양')
+
+SELECT *
+FROM COLS
+WHERE TABLE_NAME = 'BOOK';
+
+INSERT INTO author
+VALUES (author_sequence_by_id.nextval, '이문열', '경북 영양')
+
+INSERT INTO author
+VALUES (author_sequence_by_id.nextval, '박경리', '경상남도 통영')
+
+INSERT INTO author
+VALUES (author_sequence_by_id.nextval, '유시민', '17대 국회의원')
+
+INSERT INTO author
+VALUES (author_sequence_by_id.nextval, '기안84', '기안동에서 산 84년생')
+
+INSERT INTO author
+VALUES (author_sequence_by_id.nextval, '강풀', '온라인 만화가 1세대')
+
+INSERT INTO author
+VALUES (author_sequence_by_id.nextval, '김영하', '알쓸신잡')
+
+SELECT *
+FROM author;
+
+
+
+INSERT INTO BOOK
+VALUES (book_sequence_by_id.nextval, '우리들의 일그러진 영웅', '다림', TO_DATE('1998/02/22', 'YYYY/MM/DD'), 1);
+
+INSERT INTO BOOK
+VALUES (book_sequence_by_id.nextval, '삼국지', '민음사', TO_DATE('2002/03/01', 'YYYY/MM/DD'), 1);
+
+INSERT INTO BOOK
+VALUES (book_sequence_by_id.nextval, '토지', '마로니에북스', TO_DATE('2012/08/15', 'YYYY/MM/DD'), 1);
+
+INSERT INTO BOOK
+VALUES (book_sequence_by_id.nextval, '유시민의 글쓰기 특강', '생각의길', TO_DATE('2015/04/01', 'YYYY/MM/DD'), 1);
+
+INSERT INTO BOOK
+VALUES (book_sequence_by_id.nextval, '패션왕', '중앙북스(books)', TO_DATE('2012/02/22', 'YYYY/MM/DD'), 1);
+
+INSERT INTO BOOK
+VALUES (book_sequence_by_id.nextval, '순정만화', '재미주의', TO_DATE('2011/08/03', 'YYYY/MM/DD'), 1);
+
+INSERT INTO BOOK
+VALUES (book_sequence_by_id.nextval, '오직두사람', '문학동네', TO_DATE('2017/05/04', 'YYYY/MM/DD'), 1);
+
+INSERT INTO BOOK
+VALUES (book_sequence_by_id.nextval, '26년', '재미주의', TO_DATE('2012/02/04', 'YYYY/MM/DD'), 5);
+
+
+SELECT *
+FROM book;
+
+
+
+UPDATE book
+SET author_id = '6'
+WHERE book_id = 7;
+
+
+
+SELECT book.book_id, book.title, book.PUBS, book.pub_date, book.author_id, author.author_name, author.author_desc
+FROM BOOK book,
+     AUTHOR author
+WHERE book.author_id = author.author_id;
+
+
