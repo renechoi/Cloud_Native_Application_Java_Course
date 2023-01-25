@@ -1,4 +1,4 @@
-package kosta.basic.day024;
+package kosta.basic.day024.jdbc;
 
 import java.sql.*;
 
@@ -8,12 +8,6 @@ public class ConnectionManager {
     private static final String DB_URL = "jdbc:oracle:thin:@localhost:1521:XE";
     private static final String DB_USERNAME = "webdb";
     private static final String DB_PW = "oracle";
-
-    static {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-    }
 
     public static Connection getConnection() {
         try {
@@ -25,5 +19,4 @@ public class ConnectionManager {
             throw new IllegalStateException("error");
         }
     }
-
 }

@@ -1,4 +1,4 @@
-package kosta.basic.day024;
+package kosta.basic.day024.jdbc;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
