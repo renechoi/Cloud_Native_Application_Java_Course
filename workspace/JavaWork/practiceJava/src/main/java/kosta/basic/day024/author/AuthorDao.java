@@ -1,11 +1,12 @@
 package kosta.basic.day024.author;
 
-import kosta.basic.day024.Dao;
 import kosta.basic.day024.jdbc.JdbcTemplate;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AuthorDao implements Dao {
     JdbcTemplate jdbcTemplate = new JdbcTemplate();
@@ -15,7 +16,8 @@ public class AuthorDao implements Dao {
                 UPDATE AUTHOR author
                 SET author.AUTHOR_NAME = ?,
                     author.AUTHOR_DESC = ?
-                WHERE author.AUTHOR_ID = ?""";
+                WHERE author.AUTHOR_ID = ?
+                """;
     String delete = "DELETE FROM AUTHOR author WHERE author.AUTHOR_ID = ?";
     String getList = """
                 SELECT author.AUTHOR_ID
@@ -23,7 +25,6 @@ public class AuthorDao implements Dao {
                        author.AUTHOR_DESC
                 FROM AUTHOR author
                 """;
-
 
     @Override
     public int insert(AuthorVo authorVo) throws SQLException {
@@ -51,14 +52,24 @@ public class AuthorDao implements Dao {
 
     @Override
     public List<AuthorVo> getList() throws SQLException {
-        List<AuthorVo> authorVos = jdbcTemplate.getList(getList);
 
-        authorVos.stream().filter(vo-> vo!=null).forEach(System.out::println);
+        ResultSet resultSet = jdbcTemplate.executeQuery(getList);
+
+        List<AuthorVo> authorVos = new ArrayList<>();
+
+        while (resultSet.next()) {
+            authorVos.add(new AuthorVo(
+                    resultSet.getInt("author_id"),
+                    resultSet.getString("AUTHOR_NAME"),
+                    resultSet.getString("AUTHOR_DESC")));
+        }
+
+        authorVos.stream().filter(Objects::nonNull).forEach(System.out::println);
         return authorVos;
     }
 
     public void selectAll() throws SQLException {
-        ResultSet resultSet = jdbcTemplate.executeQueryAll(selectAll);
+        ResultSet resultSet = jdbcTemplate.executeQuery(selectAll);
         print(resultSet);
     }
 

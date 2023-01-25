@@ -2,7 +2,7 @@ package kosta.basic.day024.author;
 
 import java.util.Objects;
 
-public class AuthorVo {
+public class AuthorVo{
     int author_id;
     String author_name;
     String author_description;
@@ -42,4 +42,5 @@ public class AuthorVo {
     public int hashCode() {
         return Objects.hash(author_id, author_name, author_description);
     }
+
 }

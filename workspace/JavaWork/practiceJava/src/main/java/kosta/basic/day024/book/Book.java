@@ -1,4 +1,4 @@
-package kosta.basic.day024;
+package kosta.basic.day024.book;
 
 public class Book {
 
@@ -8,6 +8,7 @@ public class Book {
     private String publishDate;
     private int authorId;
 
+
     public Book(int bookId, String title, String publisher, String publishDate, int authorId) {
         this.bookId = bookId;
         this.title = title;
@@ -15,6 +16,7 @@ public class Book {
         this.publishDate = publishDate;
         this.authorId = authorId;
     }
+
 
     public int getBookId() {
         return bookId;
@@ -34,5 +36,22 @@ public class Book {
 
     public int getAuthorId() {
         return authorId;
+    }
+
+    public boolean contains(String value) {
+        return title.contains(value) || publisher.contains(value) || publishDate.contains(value);
+    }
+
+    public void show() {
+        System.out.printf(
+                """     
+                        <book %s>
+                        title: %s
+                        publisher: %s
+                        publishDate: %s
+                        authorId: %s
+                                                
+                        """, bookId, title, publisher, publishDate, authorId
+        );
     }
 }
