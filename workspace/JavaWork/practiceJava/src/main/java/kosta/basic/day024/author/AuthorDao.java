@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class AuthorDao implements Dao {
+public class AuthorDao implements Dao<AuthorVo> {
     JdbcTemplate jdbcTemplate = new JdbcTemplate();
     String selectAll = "select author_id, author_name name, author_desc from author";
     String insert = "INSERT INTO author VALUES (author_sequence_by_id.nextval, ?, ?)";

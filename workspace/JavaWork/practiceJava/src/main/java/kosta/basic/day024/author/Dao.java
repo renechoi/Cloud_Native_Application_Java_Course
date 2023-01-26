@@ -5,9 +5,9 @@ import kosta.basic.day024.author.AuthorVo;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface Dao {
+public interface Dao<T> {
 
-    int insert(AuthorVo authorVo) throws SQLException;
+    int insert(T t) throws SQLException;
 
     int delete(AuthorVo authorVo, String deleteIndex) throws SQLException;
     int update(AuthorVo authorVo, String updateIndexAt, String updateName, String updateDescription) throws SQLException;

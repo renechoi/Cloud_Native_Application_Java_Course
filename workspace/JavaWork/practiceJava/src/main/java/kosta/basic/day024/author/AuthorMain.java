@@ -7,7 +7,9 @@ public class AuthorMain {
 
         AuthorDao authorDao = new AuthorDao();
 
-        int Result = authorDao.insert(new AuthorVo("기안84", "패션왕"));
+        Dao<AuthorVo> authorVoDao = new AuthorDao();
+
+        int Result = authorVoDao.insert(new AuthorVo("기안84", "패션왕"));
 
         authorDao.selectAll();
 
