@@ -4,6 +4,7 @@ import kosta.basic.day024.jdbc.JdbcTemplate;
 import kosta.basic.day024.jdbc.RowMapper;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +27,31 @@ public class BookDao {
                 SELECT *
                 FROM book
                 """),
-        FIND_BY_TITLE("SELECT book_id, title, publisher, pub_date, author_id FROM book WHERE title = ?");
+        FIND_BY_TITLE("SELECT book_id, title, publisher, pub_date, author_id FROM book WHERE title = ?"),
+        GET_COLUMNS("""
+                        SELECT *
+                        FROM COLS
+                        WHERE TABLE_NAME = 'BOOK'
+                        """);
 
         private final String sql;
 
         queries(String sql) {
             this.sql = sql;
         }
-        }
+    }
+
+    public int join() throws SQLException {
+        String query = """
+                SELECT BOOK_ID, TITLE, PUBLISHER, PUB_DATE, book.AUTHOR_ID
+                from Book book, AUTHOR author
+                where book.AUTHOR_ID = author.AUTHOR_ID;
+                        """;
+
+        JDBC_TEMPLATE.executeQuery(query);
+
+        return 0;
+    }
 
     public int insert(Book book) throws SQLException {
         return JDBC_TEMPLATE.executeUpdate(queries.INSERT.sql, preparedStatement -> {
@@ -102,5 +120,27 @@ public class BookDao {
                     bookId: %s
                     """, resultSet.getInt("book_id"));
         }
+    }
+
+    private List<String> getColumnNames(String getColumns) throws SQLException {
+        ResultSet resultSet = JDBC_TEMPLATE.executeQuery(queries.GET_COLUMNS.sql);
+        ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+
+        int columnCount = resultSetMetaData.getColumnCount();
+
+        List<String> allColumns = new ArrayList<>();
+        for (int i = 1; i <= columnCount; i++) {
+            allColumns.add(resultSetMetaData.getColumnName(i));
+        }
+
+        List<String> columnNames = new ArrayList<>();
+        while (resultSet.next()) {
+            for (String column : allColumns) {
+                if (column.equals("COLUMN_NAME")) {
+                    columnNames.add(String.valueOf(resultSet.getObject(column)));
+                }
+            }
+        }
+        return columnNames;
     }
 }

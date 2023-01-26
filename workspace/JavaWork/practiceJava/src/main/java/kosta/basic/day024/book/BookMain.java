@@ -7,6 +7,7 @@ import java.sql.SQLException;
 public class BookMain {
     public static void main(String[] args) throws SQLException {
         BookDao bookDao = new BookDao();
+        show(bookDao);
     }
 
     private static void bookActions(BookDao bookDao) throws SQLException {
@@ -21,8 +22,10 @@ public class BookMain {
                 resultSet.getInt("pub_date")));
 
         System.out.println(book2);
+    }
 
-        Books books = bookDao.findBooksByContaining("삼");
+    private static void show(BookDao bookDao) throws SQLException {
+        Books books = bookDao.findBooksByContaining("출");
         books.show();
     }
 }
