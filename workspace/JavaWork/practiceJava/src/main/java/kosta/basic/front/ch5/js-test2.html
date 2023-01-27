@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js-test2</title>
+
+
+    <style>
+        .table {
+            margin: 25px;
+            border-collapse: collapse;
+        }
+
+        .table tr {
+            margin: 20px;
+            border: white;
+            border-bottom-width: thick;
+        }
+
+        .table td:hover {
+            background-color: #ff6600;
+        }
+
+        .table tr:nth-child(even) td {
+            background-color: #999999;
+        }
+
+        .table tr th {
+            background-color: #0066FF;
+            color: #ffffff;
+            border-bottom: 3px solid #ffffff;
+            border-left: 1px solid white;
+        }
+
+        .table tr td {
+            margin: 30px;
+            padding: 5px 25px;
+            background-color: #8a8bc0;
+            border: 1px solid #ffffff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="number"></div>
+
+
+<table class="table">
+    <tr>
+        <th>2단</th>
+        <th>3단</th>
+        <th>4단</th>
+        <th>5단</th>
+        <th>6단</th>
+        <th>7단</th>
+        <th>8단</th>
+        <th>9단</th>
+    </tr>
+    <tr>
+        <td class="dan2">2</td>
+        <td class="dan3">3</td>
+        <td class="dan4">4</td>
+        <td class="dan5">5</td>
+        <td class="dan6">6</td>
+        <td class="dan7">7</td>
+        <td class="dan8">8</td>
+        <td class="dan9">9</td>
+    </tr>
+
+</table>
+
+
+<script>
+
+    function calculateNineTimes() {
+        let a = document.querySelector('.number');
+        a.innerHTML += "abc";
+
+
+        for (let i = 2; i <= 9; i++) {
+            let nineTimes = document.querySelector(`.dan${i}`);
+            for (let j = 1; j <= 9; j++) {
+                nineTimes.innerHTML += `${i} x ${j} = ${i * j} <br>`
+            }
+        }
+    }
+
+    calculateNineTimes();
+
+
+</script>
+
+
+</body>
+</html>
