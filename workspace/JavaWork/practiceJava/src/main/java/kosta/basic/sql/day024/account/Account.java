@@ -1,4 +1,4 @@
-package kosta.basic.day024.account;
+package kosta.basic.sql.day024.account;
 
 public class Account {
     private int seqId;

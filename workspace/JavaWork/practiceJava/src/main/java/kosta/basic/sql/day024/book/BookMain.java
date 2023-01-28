@@ -1,6 +1,4 @@
-package kosta.basic.day024.book;
-
-import kosta.basic.day024.jdbc.JdbcTemplate;
+package kosta.basic.sql.day024.book;
 
 import java.sql.SQLException;
 

@@ -1,4 +1,4 @@
-package kosta.basic.day024.author;
+package kosta.basic.sql.day024.author;
 
 import java.sql.SQLException;
 

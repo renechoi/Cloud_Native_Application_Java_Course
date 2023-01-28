@@ -1,6 +1,6 @@
-package kosta.basic.day024.author;
+package kosta.basic.sql.day024.author;
 
-import kosta.basic.day024.jdbc.JdbcTemplate;
+import kosta.basic.sql.day024.jdbc.JdbcTemplate;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

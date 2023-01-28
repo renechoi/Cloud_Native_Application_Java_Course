@@ -1,7 +1,7 @@
-package kosta.basic.day024.book;
+package kosta.basic.sql.day024.book;
 
-import kosta.basic.day024.jdbc.JdbcTemplate;
-import kosta.basic.day024.jdbc.RowMapper;
+import kosta.basic.sql.day024.jdbc.JdbcTemplate;
+import kosta.basic.sql.day024.jdbc.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

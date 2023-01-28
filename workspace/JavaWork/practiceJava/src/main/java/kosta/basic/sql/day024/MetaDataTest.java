@@ -1,13 +1,9 @@
-package kosta.basic.day024;
+package kosta.basic.sql.day024;
 
-import kosta.basic.day024.jdbc.ConnectionManager;
+import kosta.basic.sql.day024.jdbc.ConnectionManager;
 import org.junit.jupiter.api.Test;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class MetaDataTest {
     public static void main(String[] args) throws SQLException {

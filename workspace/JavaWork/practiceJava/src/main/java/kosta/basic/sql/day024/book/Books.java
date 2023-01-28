@@ -1,4 +1,4 @@
-package kosta.basic.day024.book;
+package kosta.basic.sql.day024.book;
 
 import java.util.ArrayList;
 import java.util.Arrays;
