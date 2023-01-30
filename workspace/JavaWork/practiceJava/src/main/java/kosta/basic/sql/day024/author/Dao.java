@@ -7,8 +7,10 @@ public interface Dao<T> {
 
     int insert(T t) throws SQLException;
 
-    int delete(AuthorVo authorVo, String deleteIndex) throws SQLException;
-    int update(AuthorVo authorVo, String updateIndexAt, String updateName, String updateDescription) throws SQLException;
-    List<AuthorVo> getList( ) throws SQLException;
+    int delete(T t, String deleteIndex) throws SQLException;
+    int update(T t, String updateIndexAt, String updateName, String updateDescription) throws SQLException;
+
+    void selectAll() throws SQLException;
+    List<AuthorVo> get( ) throws SQLException;
 
 }

@@ -51,7 +51,7 @@ public class AuthorDao implements Dao<AuthorVo> {
     }
 
     @Override
-    public List<AuthorVo> getList() throws SQLException {
+    public List<AuthorVo> get() throws SQLException {
 
         ResultSet resultSet = jdbcTemplate.executeQuery(getList);
 
@@ -68,6 +68,7 @@ public class AuthorDao implements Dao<AuthorVo> {
         return authorVos;
     }
 
+    @Override
     public void selectAll() throws SQLException {
         ResultSet resultSet = jdbcTemplate.executeQuery(selectAll);
         print(resultSet);

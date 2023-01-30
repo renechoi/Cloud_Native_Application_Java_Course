@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>테이블</title>
+
+</head>
+<body>
+<style type="text/css" media="screen">
+  * { /*처음 0값을 넣고 여백없는 상태로 만든다*/
+    /*기본적으로 마진값을 가지고 태어날 수 있어서*/
+    margin: 0; /*http://www.tcpschool.com/css/css_boxmodel_margins*/
+    padding: 0; /*http://www.tcpschool.com/css/css_boxmodel_padding*/
+  }
+  body {
+    font-family: '맑은 고딕', '돋움'; /*http://www.tcpschool.com/css/css_basic_fonts*/
+    font-size: 0.75em; /*설명은 위 주소*/
+    color: #333;
+  }
+  .tbl-ex {
+    margin: 10px auto;
+    border: 1px solid #333; /*http://www.tcpschool.com/css/css_boxmodel_borders*/
+    border-collapse: collapse; /*http://www.tcpschool.com/css/css_basic_tables*/
+  }
+  .tbl-ex th {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: center; /*http://www.tcpschool.com/css/css_basic_text*/
+  }
+  .tbl-ex td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: left;
+  }
+  .tbl-ex th {
+    background-color: #999; /*http://www.tcpschool.com/css/css_basic_backgrounds*/
+    font-size: 1.1em;
+    color: #fff;
+  }
+  .tbl-ex tr.even {
+    background-color: #E8ECF6;
+  }
+  .tbl-ex:hover,
+  .tbl-ex tr.even:hover { /*http://www.tcpschool.com/css/css_selector_dynamic*/
+    background-color: #fc6;
+    cursor: pointer; /*http://home.dongyang.ac.kr/~cwkwon/my_lecture/lec_html/lecture_for_CSS/css_cursor.html*/
+  }
+</style>
+<script type="text/javascript">
+  document.write("<table class='tbl-ex' border='1px'>"); // table start
+
+  // header
+  document.write("<thead>"); //http://www.tcpschool.com/html-tags/thead
+  document.write("<tr>"); //http://www.tcpschool.com/html-tags/tr
+
+  for (let i = 2; i <= 9; i++) { //https://www.codeit.kr/community/threads/15759?utm_source=google_paid&utm_medium=pmax&utm_campaign=da_purchase&utm_content=general&gclid=Cj0KCQiAic6eBhCoARIsANlox86ykk1E-7FiDgv2qSE01rjVqtnM81-5QicD3Se2i19iqJDpnbjILscaAorwEALw_wcB
+    document.write("<th>" + i + "단</th>"); //http://www.tcpschool.com/html-tags/th
+  }
+  document.write("</tr>"); // tr end
+  document.write("</thead>"); // thead end
+
+  // body
+  document.write("<tbody>"); //http://www.tcpschool.com/html-tags/tbody
+
+  for (let i = 1; i <= 9; i++) {
+    document.write("<tr>");
+    for (let j = 2; j <= 9; j++) {
+      document.write("<td>" + j + " * " + i + " = " + (j * i) + "</td>");
+    } // http://www.tcpschool.com/html-tags/td
+    document.write("</tr>"); // tr end
+  }
+  document.write("</tbody>"); // tbody
+  document.write("</table>"); // table end
+</script>
+</body>
+</html>
