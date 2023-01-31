@@ -145,3 +145,7 @@ FROM BOOK book,
 WHERE book.author_id = author.author_id;
 
 
+// 오라클 디비에서 새로운 계정 만들려면 system으로 새롭게 접근해서 로그인 해야 한다.
+create user 계정이름 identified by 비밀번호
+grant resource, connect to 계정이름
+
