@@ -13,19 +13,42 @@ public class HelloServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        System.out.println("HelloServlet.service");
+
+        drawHtml(response);
+
+        System.out.println("request = " + request);
+        System.out.println("response = " + response);
+
+
+        String username = request.getParameter("username");
+        System.out.println(username);
+
+
+    }
+
+    private static void drawHtml(HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
         out.println("<!DOCTYPE html>");
         out.println("<HTML>");
         out.println("<HEAD><TITLE>Hello World</TITLE>");
         out.println("<meta charset='UTF-8'></HEAD>");
 
-
-        out.println("<BODY><H1>Hello World !!! 헬로월드</H1>");
+        out.println("<BODY><H1>Hello World !!! 헬로월드 테스트 !!!!!!!!!!!!!</H1>");
         out.println("</BODY></HTML>");
+    }
+
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+        drawHtml(response);
 
     }
 
@@ -33,21 +56,7 @@ public class HelloServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
 
-        PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<HTML>");
-        out.println("<HEAD><TITLE>Hello World</TITLE>");
-        out.println("<meta charset='UTF-8'></HEAD>");
-
-
-        out.println("<BODY><H1>Hello World !!! 헬로월드</H1>");
-        out.println("</BODY></HTML>");
-
-    }
 }
 
 
