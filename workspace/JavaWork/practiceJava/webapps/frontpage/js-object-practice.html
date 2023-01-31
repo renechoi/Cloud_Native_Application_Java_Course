@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // createobject1();
+    // createObject2();
+    // createObject3();
+    // createObject4();
+    // createRectangle();
+
+
+    function createRectangle() {
+        let Rectangle = function (x1, y1, x2, y2, color) {
+            this.x1 = x1;
+            this.y1 = y1;
+            this.x2 = x2;
+            this.y2 = y2;
+            this.color = color;
+        }
+
+        Rectangle.prototype.show = function () {
+            let width = (this.x2 - this.x1 + 1);
+            let height = (this.y2 - this.y1 + 1);
+            document.write(
+                "<div style='" +
+                "position:absolute;" +
+                "left:" + this.x1 + "px;" +
+                "top:" + this.y1 + "px;" +
+                "width:" + width + "px; " +
+                "height:" + height + "px; " +
+                "background-color:" + this.color + ";" +
+                "border:1px solid #000" +
+                "'>" +
+                "</div>");
+        }
+
+        let r1 = new Rectangle(100, 100, 199, 299, "#ddd");
+        r1.show();
+    }
+
+
+    function createobject1() {
+        let employee1 = {};
+        employee1.name = "홍길동";
+        employee1.title = "과장";
+        employee1.showInfo = function () {
+            document.write("이름:" + this.name);
+            document.write("<br>");
+            document.write("직책:" + this.title);
+        }
+        employee1.showInfo();
+    }
+
+
+    function createObject2() {
+        let employee2 = {
+            name: "홍길동",
+            title: "과장",
+            showInfo: function () {
+                document.write("이름:" + this.name);
+                document.write("<br>");
+                document.write("직책:" + this.title);
+            }
+        }
+        employee2.showInfo();
+    }
+
+
+    function createObject3() {
+        let Foo = function () {
+            this.name = "bar";
+            this.nick = "buzz";
+            this.aNumber = 5;
+            this.doFoo = function () {
+                alert("i'm +" + this.name);
+            };
+
+        };
+        let obj1 = new Foo();
+        obj1.doFoo();
+    }
+
+    function createObject4() {
+        let Foo = function (name, nick) {
+            this.name = name;
+            this.nick = nick;
+            this.aNumber = 5;
+            this.doFoo = function () {
+                alert("i'm " + this.name);
+            };
+        }
+        let foo1 = new Foo("안대혁", "kick");
+        foo1.address = "서울시";
+        foo1.f = function () {
+            alert(foo1.address);
+        }
+        foo1.doFoo();
+        foo1.f();
+
+    }
+
+    // Foo.prototype.aNumber = 5;
+    // Foo.prototype.doFoo() = function () {
+    //     alert("i'm" + this.name);
+    // }
+</script>
+
+
+<div class="array-practice">
+    test
+</div>
+
+<!--<style>-->
+<!--    .array-practice{background-color: #999999}-->
+<!--</style>-->
+
+<script>
+
+
+    let array = new Array(10);
+    let colors = ["blue", "black", "red", "green"];
+    let size = colors.length;
+
+    let arrayPracticeSelector = document.querySelector('.array-practice');
+    let hi098123_style = document.createElement('style');
+    for (let i = 0; i < size; i++) {
+        hi098123_style.innerHTML += `"array-practice{font-size:2em;color:#333} a{color:${colors[i]}}"`;
+        document.body.appendChild(hi098123_style);
+        arrayPracticeSelector.style.background = colors[i];
+
+    }
+
+
+</script>
+
+
+<script>
+    let employee1 = {
+        name: "홍길동",
+        title: "과장"
+    };
+
+    // alert(employee1["name"] + " " + employee1["title"]);
+</script>
+
+
+<script>
+    let fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.push("kiwi");
+    console.log(fruits);
+    console.log(fruits.length);
+
+    console.log(fruits.pop());
+    console.log(fruits);
+    console.log(fruits.pop());
+
+    fruits.reverse();
+    console.log(fruits);
+
+    fruits.shift();
+    console.log(fruits);
+
+    let citrus = fruits.slice(1, 3);
+    console.log(citrus);
+
+    fruits.sort();
+    console.log(fruits);
+
+
+</script>
+
+
+<script>
+    let str = "Hello, I'm a string";
+    console.log("문자열 길이는: " + str.length);
+
+    let str2 = "hello" + 5;
+    console.log(typeof (str2));
+
+    let str3 = "string1 string2 string3";
+    let start = str.indexOf('string2');
+
+    // alert(start)
+    // alert(str3)
+
+
+    let strSplit = str3.split(' ');
+    console.log(strSplit);
+
+    console.log(typeof strSplit);
+
+
+</script>
+
+
+<script>
+    let escaped = escape("<h3> here's a headline</h3>");
+    console.log(escaped);
+    document.write(escaped)
+
+    // url 엔코딩
+
+    let url = "http://mysite.com/홍길동";
+    let encodedURL = encodeURI(url);
+    let decodedURL = decodeURI(url);
+</script>
+
+
+<script>
+    let d = new Date();
+    document.write(d);
+</script>
+
+
+<script>
+    let sum = new Function("a", "b", "return a+b");
+
+    function sum2(a, b) {
+        return a + b;
+    }
+
+    let sum3 = function (a, b) {
+        return a + b;
+    }
+
+</script>
+
+
+<script>
+    function changeText(id) {
+        id.innerHTML = "oops!";
+    }
+</script>
+<h1 onclick="this.innerHTML ='Oops!' "> Click on this text! </h1>
+
+
+
+<script>
+    function displayDate(){
+        document.getElementById("demo").innerHTML = Date();
+    }
+
+    function hideDate(){
+        document.getElementById("demo").innerHTML = "";
+    }
+</script>
+<p> 버튼을 클릭하면 <em>displayDate()</em>함수가 실행됩니다. </p>
+<button id="myBtn" onclick="displayDate();">try this </button>
+<button id="myBtn2" onmouseover="displayDate();" onmouseout="hideDate()">try this </button>
+<p id="demo"></p>
+
+
+
+
+<script>
+    function displayDate(){
+        document.getElementById("demo").innerHTML = Date();
+    }
+
+    function onLoad(){
+        let btn = document.getElementById("myBtn");
+        btn.onclick = displayDate;
+        btn.onmouseover = displayDate;
+        btn.onmouseout = hideDate;
+    }
+</script>
+<div onload="onLoad()" onunload="onUnload()">
+
+    <p> 버튼을 클릭하면 <em> displayDate()</em> 함수가 실행됩니다 </p>
+    <button id ="myBtn"> try it</button>
+    <p id="demo"></p>
+</div>
+
+
+
+<script>
+    function checkCookies(){
+        if (navigator.cookieEnabled==true){
+            alert("cookie allowed")
+        } else {
+            alert("cookie not allowed")
+        }
+    }
+</script>
+
+<body onload = "checkCookies()">
+</body>
+
+
+</body>
+</html>
