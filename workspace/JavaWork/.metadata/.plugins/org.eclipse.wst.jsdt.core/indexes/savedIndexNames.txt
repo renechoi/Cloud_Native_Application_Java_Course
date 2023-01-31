@@ -1,2 +1,0 @@
-INDEX VERSION 1.4+/Users/Rene/Documents/rene/Kosta/Cloud_Native_Application_Java_Course/workspace/JavaWork/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-1321737652.index

@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author Rene
- *
- */
-module practice {
-}
